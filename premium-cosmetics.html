@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumière Beauty — Premium Ethiopian Skincare</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #fbf9f8;
+        }
+        .text-coffee { color: #1A1208; }
+        .bg-coffee { background-color: #1A1208; }
+        .bg-parchment { background-color: #F5F0E8; }
+        .border-hairline { border: 1px solid #E0DBD3; }
+        .negative-tracking { letter-spacing: -0.05em; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#1c1b1b",
+                        "surface-container-highest": "#e4e2e1",
+                        "outline-variant": "#c4c7c7",
+                        "primary-fixed": "#e5e2e1",
+                        "tertiary-fixed": "#f1e0ce",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed-dim": "#f9bd3f",
+                        "tertiary-fixed-dim": "#d4c4b3",
+                        "on-primary-container": "#858383",
+                        "surface-variant": "#e4e2e1",
+                        "secondary": "#7b5800",
+                        "on-primary-fixed-variant": "#474646",
+                        "surface": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdea6",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "on-tertiary-container": "#908273",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#ffc244",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#231a0f",
+                        "on-surface-variant": "#444748",
+                        "inverse-surface": "#303030",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "surface-container-low": "#f5f3f2",
+                        "inverse-on-surface": "#f3f0f0",
+                        "tertiary-container": "#231a0f",
+                        "on-surface": "#1b1c1c",
+                        "outline": "#747878",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "on-error": "#ffffff",
+                        "background": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#504538",
+                        "on-secondary-container": "#715000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#271900",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#c9c6c5",
+                        "surface-container": "#f0eded",
+                        "surface-bright": "#fbf9f8",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "ethiopian-gold": "#C8920E",
+                        "ink-black": "#0A0A0A"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-mobile": "64px",
+                        "grid-gutter": "24px",
+                        "base": "8px",
+                        "grid-margin": "40px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "section-display": ["Inter"],
+                        "hero-display-mobile": ["Inter"],
+                        "hero-display": ["Inter"],
+                        "body-main": ["Inter"],
+                        "label-muted": ["Inter"],
+                        "eyebrow": ["Inter"]
+                    },
+                    "fontSize": {
+                        "section-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                        "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                        "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-1.6px", "fontWeight": "600"}],
+                        "body-main": ["17px", {"lineHeight": "1.6", "letterSpacing": "-0.2px", "fontWeight": "400"}],
+                        "label-muted": ["14px", {"lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "400"}],
+                        "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "2.0px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-main">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-md dark:bg-primary-container/85 border-b border-outline-variant dark:border-on-primary-container">
+<div class="max-w-[1280px] mx-auto flex justify-between items-center px-grid-margin py-4">
+<a class="font-section-display text-section-display tracking-tighter text-primary dark:text-primary-fixed" href="#">Lumière Beauty</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-main text-body-main text-primary dark:text-secondary-fixed-dim border-b-2 border-secondary pb-1 hover:text-secondary transition-colors duration-300" href="#">Collections</a>
+<a class="font-body-main text-body-main text-on-surface-variant dark:text-on-primary-container hover:text-secondary transition-colors duration-300" href="#">Skincare</a>
+<a class="font-body-main text-body-main text-on-surface-variant dark:text-on-primary-container hover:text-secondary transition-colors duration-300" href="#">Fragrance</a>
+<a class="font-body-main text-body-main text-on-surface-variant dark:text-on-primary-container hover:text-secondary transition-colors duration-300" href="#">Heritage</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed hover:text-secondary transition-colors duration-300 scale-95 active:scale-95 duration-200 transition-transform" data-icon="search">search</button>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed hover:text-secondary transition-colors duration-300 scale-95 active:scale-95 duration-200 transition-transform" data-icon="shopping_bag">shopping_bag</button>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed hover:text-secondary transition-colors duration-300 scale-95 active:scale-95 duration-200 transition-transform" data-icon="person">person</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[90vh] md:h-screen bg-coffee flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Premium skincare product flat lay" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkPQ15XuAH4fKUM_bRy81Vu511O1ilHKr6KL2A3FbljvLOp0GpvrQ6H8iObZnQPF1o_TJzlboT0Lvv2TT-wdsJEebOMbf1PEzOVt1LbyL4XBD94_-JEnuXFpf_V1N-BhObymRpkWkODJxJJvpIDVJbM0RnBuY_ljGuNNF_nC6VReHLB3I_WjR96YDMm1WDKzH-AF5LFavzUZC1mB7dbcddDYVTzG-kljYe_EMWi7MXAomI3PgL_a0dNFy0QxKU0heMUJGsi5XCLc"/>
+</div>
+<div class="relative z-10 max-w-[1280px] mx-auto px-grid-margin w-full">
+<div class="max-w-2xl">
+<h1 class="font-hero-display text-hero-display-mobile md:text-hero-display text-white mb-6 negative-tracking">Premium Beauty, Delivered.</h1>
+<p class="text-[20px] text-white/80 mb-10 font-body-main">Luxury cosmetics curated for Ethiopian skin tones.</p>
+<a class="inline-block bg-ink-black text-white px-10 py-5 rounded-full font-body-main font-semibold hover:opacity-90 transition-all transform hover:-translate-y-1" href="#collection">
+                    Shop Now
+                </a>
+</div>
+</div>
+</header>
+<!-- Stats Bar -->
+<section class="bg-white py-16 border-b border-hairline">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter text-center">
+<div class="flex flex-col gap-2">
+<span class="font-section-display text-section-display text-ethiopian-gold negative-tracking">+100%</span>
+<span class="font-label-muted text-label-muted text-ink-black uppercase tracking-widest">sales growth</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-section-display text-section-display text-ethiopian-gold negative-tracking">60%</span>
+<span class="font-label-muted text-label-muted text-ink-black uppercase tracking-widest">less support time</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-section-display text-section-display text-ethiopian-gold negative-tracking">2,400+</span>
+<span class="font-label-muted text-label-muted text-ink-black uppercase tracking-widest">monthly orders</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Products -->
+<section class="py-section-gap bg-surface" id="collection">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="mb-16">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase mb-4 block">THE COLLECTION</span>
+<h2 class="font-section-display text-section-display text-ink-black negative-tracking">Our Best Sellers</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+<!-- Product Card 1 -->
+<div class="bg-parchment p-8 border-hairline flex flex-col group transition-all duration-500 hover:border-ink-black">
+<div class="aspect-[4/5] mb-8 overflow-hidden">
+<img alt="Radiance Serum" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist amber glass bottle containing a golden radiance serum, set against a warm parchment background with soft, editorial shadows. The lighting is bright and high-key, emphasizing the premium quality and clear texture of the liquid inside. Modern light-mode aesthetic with clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChg2SryA0vmmgVcB6TPi4nb2BBaU-y2hDEJK849Kl0tvAZlWI2DTFewxN8U1gn6htm1PbDpZjaXfwcH_fA97tjJZOWbmOhYCDHxv1Cso3kbzllu4Cc9CFzjPEcTaYjtOqLcSpsRmXRDZD0ndsOg_ioh92WtYfV5lPLC5ultWml7oWKFWkxJwt5_xQOkoeZ77VWWS4pTvu3mqmFVbRpJYAvaE7F3WaBcPmwc1SqCpsAuHcAUQyGncNO8KPUja-5ue90MekPz2kh50U"/>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-section-display text-[24px] text-ink-black">Radiance Serum</h3>
+<p class="font-body-main text-ink-black/60">3,200 ETB</p>
+<button class="bg-ink-black text-white py-4 rounded-full font-body-main font-medium hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-parchment p-8 border-hairline flex flex-col group transition-all duration-500 hover:border-ink-black">
+<div class="aspect-[4/5] mb-8 overflow-hidden">
+<img alt="Deep Hydration Cream" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A premium face cream jar with a black lid and minimalist cream label, displayed on a textured organic stone surface. The color palette is composed of warm earth tones, deep blacks, and soft whites, reflecting a luxury Ethiopian-inspired aesthetic. High-contrast lighting creates an expensive, gallery-like mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6M-s7JDQcl1WUKdvP_XbiSEpPMahaxxLIYr99Y47n8UQKwoYcqavOdU9ShxV4yGhKwsU8iwgCYy2E2zLaJaIBUCGpC-oAFSxLgdWYsJy95Bkh5vJHg97xCIZoZm-CRMaKL14ifZbGLXfzz1n3YTd5iOqixTeT1Ga3JFz-2oAN1fLJ_EPLfHEZlyGtdmszutUolOjDg7kCL3cffv_yKDFQKg23fjZnsssDoaAUNGzCk6ohWE6MohMkjMbRDHuyaQUC0et4hxPTmS4"/>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-section-display text-[24px] text-ink-black">Face Cream</h3>
+<p class="font-body-main text-ink-black/60">2,850 ETB</p>
+<button class="bg-ink-black text-white py-4 rounded-full font-body-main font-medium hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-parchment p-8 border-hairline flex flex-col group transition-all duration-500 hover:border-ink-black">
+<div class="aspect-[4/5] mb-8 overflow-hidden">
+<img alt="Body Oil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A luxury botanical body oil in a dark brown glass bottle, surrounded by dried natural Ethiopian coffee plants and organic textures. The lighting is moody and sophisticated, highlighting the golden oil within. A clean, modern light-mode background provides a sharp contrast to the rich coffee and earth tones of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLSNliTNsuhQ1CsgZP5mnBVNdfSt_gCbRvVE9i1xBiRLuXXBg2xFOp-CX2G0SJINGHwRAzQW-3Fa1eiYU5_ALQXJ-YTFdYehm1H417DremeK1RcgiHdy35VpE3CrZaoIKT6X1t-c6z8pukr5uimpUW-LhmKqTnEjw29O8TwN2ISJ_cLHgCs8YM3DKYpOSSdbyjHt4SENDLZ1WVSH_feu8DEOL-cnU56j3VWUZ8NBGLAgU4kGJeTX261rYx7mF8seutLGY3ZTHfDOk"/>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="font-section-display text-[24px] text-ink-black">Body Oil</h3>
+<p class="font-body-main text-ink-black/60">4,100 ETB</p>
+<button class="bg-ink-black text-white py-4 rounded-full font-body-main font-medium hover:bg-secondary transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Story -->
+<section class="py-section-gap border-t border-hairline overflow-hidden">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+<div class="relative">
+<img alt="Ethiopian Heritage" class="w-full h-auto grayscale-0 hover:grayscale transition-all duration-1000 border-hairline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp5sgJvCbolFpW0LLZQ5xtC_Th16C_86XsGlncRWE3668Sn5FQbY28mqIf0rFFRYwZpmMIh7AC_BPtMXTpl13i5ogTtMlOpA4IMjAIzCqoazy5vnpEbqh26C85dxkBK1UrJDNkLLZCcyFslIgOYX4zeUm6st1EH6iPPGemoeiIly3L24ApRxBsa0p5ZVrwCTcBZOpb0OCdUx-lSVes_2z89al7ML3rYAe-lqG96PYZUW_8a98dmHRofG59qtpBeU81_frVtmYSPxo"/>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-ethiopian-gold/10 backdrop-blur-xl border border-ethiopian-gold/20 -z-10"></div>
+</div>
+<div class="flex flex-col gap-8">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase tracking-[0.2em]">OUR HERITAGE</span>
+<h2 class="font-section-display text-section-display text-ink-black negative-tracking">Beauty rooted in Ethiopia.</h2>
+<p class="font-body-main text-body-main text-on-surface-variant leading-relaxed">
+                        Lumière Beauty was born from a desire to bridge ancient Ethiopian skincare rituals with modern scientific precision. We source our primary ingredients directly from local highland farmers, ensuring every drop of our serum and every gram of our cream carries the essence of our heritage.
+                    </p>
+<p class="font-body-main text-body-main text-on-surface-variant leading-relaxed">
+                        Our commitment goes beyond aesthetics. We believe in high-tech precision that respects cultural wisdom, creating world-class digital and physical experiences for the forward-thinking individual.
+                    </p>
+<div class="mt-4">
+<a class="inline-flex items-center gap-4 text-ink-black font-semibold border-b-2 border-ink-black pb-1 hover:text-secondary hover:border-secondary transition-all" href="#">
+                            Learn more about our process
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-primary-container dark:bg-black border-t border-on-primary-container">
+<div class="max-w-[1280px] mx-auto px-grid-margin py-section-gap-mobile md:py-section-gap grid grid-cols-2 md:grid-cols-4 gap-grid-gutter">
+<div class="col-span-2 md:col-span-1">
+<h2 class="font-section-display text-section-display text-primary-fixed mb-8">Lumière</h2>
+<p class="font-label-muted text-label-muted text-on-primary-container mb-8 max-w-xs">
+                    Elevating Ethiopian beauty standards through tradition and technology.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-body-main font-bold text-white mb-4 uppercase tracking-widest text-[12px]">Shop</h4>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">New Arrivals</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Best Sellers</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Gift Cards</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Bundles</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-body-main font-bold text-white mb-4 uppercase tracking-widest text-[12px]">Customer Care</h4>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Shipping &amp; Returns</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Contact Us</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">FAQ</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Order Tracking</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-body-main font-bold text-white mb-4 uppercase tracking-widest text-[12px]">Legal</h4>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Accessibility</a>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-grid-margin py-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-label-muted text-label-muted text-on-primary-container opacity-80">© 2024 Lumière Beauty. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Instagram</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">TikTok</a>
+<a class="font-label-muted text-label-muted text-on-primary-container hover:text-white transition-colors" href="#">Pinterest</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll behavior for navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Hover effects for product cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

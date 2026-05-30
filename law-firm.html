@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mesfin & Associates | Elite Legal Counsel</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdea6",
+                        "on-primary-container": "#858383",
+                        "on-background": "#1b1c1c",
+                        "primary-container": "#1c1b1b",
+                        "inverse-primary": "#c9c6c5",
+                        "outline-variant": "#c4c7c7",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "surface-container-high": "#eae8e7",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "on-secondary-container": "#715000",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f5f3f2",
+                        "surface-variant": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "surface": "#fbf9f8",
+                        "tertiary-fixed-dim": "#d4c4b3",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#231a0f",
+                        "on-surface": "#1b1c1c",
+                        "primary": "#000000",
+                        "surface-container-highest": "#e4e2e1",
+                        "secondary": "#7b5800",
+                        "on-secondary-fixed": "#271900",
+                        "on-tertiary-fixed": "#231a0f",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fbf9f8",
+                        "on-primary-fixed-variant": "#474646",
+                        "primary-fixed": "#e5e2e1",
+                        "tertiary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#f9bd3f",
+                        "background": "#fbf9f8",
+                        "outline": "#747878",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "on-tertiary-container": "#908273",
+                        "on-primary-fixed": "#1c1b1b",
+                        "inverse-surface": "#303030",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5f5e5e",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#f1e0ce",
+                        "on-surface-variant": "#444748",
+                        "secondary-container": "#ffc244",
+                        "on-tertiary-fixed-variant": "#504538",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "section-gap-mobile": "64px",
+                        "grid-margin": "40px",
+                        "section-gap": "120px",
+                        "grid-gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "hero-display": ["Inter"],
+                        "eyebrow": ["Inter"],
+                        "hero-display-mobile": ["Inter"],
+                        "section-display": ["Inter"],
+                        "label-muted": ["Inter"],
+                        "body-main": ["Inter"]
+                    },
+                    "fontSize": {
+                        "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-1.6px", "fontWeight": "600"}],
+                        "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "2.0px", "fontWeight": "500"}],
+                        "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                        "section-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                        "label-muted": ["14px", {"lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "400"}],
+                        "body-main": ["17px", {"lineHeight": "1.6", "letterSpacing": "-0.2px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fbf9f8;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hairline-border {
+            border: 1px solid #E0DBD3;
+        }
+    </style>
+</head>
+<body>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-md border-b border-outline-variant">
+        <div class="max-w-[1280px] mx-auto flex justify-between items-center h-20 px-grid-margin">
+            <div class="font-section-display text-body-main font-bold tracking-tight text-primary">
+                Mesfin & Associates
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-primary font-bold border-b-2 border-secondary pb-1 font-body-main text-body-main" href="#">Practice Areas</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-main text-body-main" href="#">Attorneys</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-main text-body-main" href="#">Cases</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-main text-body-main" href="#">Contact</a>
+            </div>
+            <button class="bg-primary text-on-primary px-6 py-3 rounded-full font-body-main text-body-main hover:opacity-80 transition-opacity">
+                Book Consultation
+            </button>
+        </div>
+    </nav>
+
+    <main class="mt-20">
+        <!-- Hero Section -->
+        <section class="bg-surface py-section-gap px-grid-margin overflow-hidden">
+            <div class="max-w-[1280px] mx-auto grid md:grid-cols-2 items-center gap-16">
+                <div class="space-y-8">
+                    <div class="font-eyebrow text-eyebrow text-secondary uppercase tracking-[2px]">
+                        Corporate Law · Addis Ababa
+                    </div>
+                    <h1 class="font-hero-display text-hero-display text-primary max-w-xl">
+                        Expert legal counsel for Ethiopian and international business.
+                    </h1>
+                    <p class="font-body-main text-body-main text-on-surface-variant max-w-md">
+                        Trusted by Ethiopia's leading enterprises since 2010. We navigate the complexities of local and global regulatory landscapes.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="bg-primary text-on-primary px-8 py-4 rounded-full font-body-main text-body-main hover:translate-y-[-2px] transition-transform">
+                            Schedule a Consultation
+                        </button>
+                    </div>
+                </div>
+                <div class="relative h-[600px] w-full rounded-lg overflow-hidden grayscale">
+                    <img alt="Modern Office" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgJVrOYHydNUtukb-fpn8t3iiLkmm7meQNeTGnfTknTHDpD5dowUDc5gkeQHUV8zLgvrtga43d019xym5_yyhPL0oN-1JQKrN8HfwE_DxElHq4q7V2X5Q5UmVunABkDNNRUG6fPpshb3oAeTaiIQbOcQBRTlWZigY1ep8LhCen9gku-ef4WS7a4wCAka7kqiTXEH3U8zY_rYWyxNJzf3kie1ytKwj02UQwF4NV1RDQYlkrj42NMa0kNw7fzOe1fmaiVw_OdLEJe_c"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Strip -->
+        <section class="border-y border-outline-variant bg-surface py-12 px-grid-margin">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="text-center mb-8 font-eyebrow text-eyebrow text-on-primary-container">
+                    TRUSTED BY:
+                </div>
+                <div class="flex flex-wrap justify-between items-center gap-8 opacity-60 grayscale mix-blend-multiply">
+                    <span class="font-section-display text-[24px] font-bold">CBE</span>
+                    <span class="font-section-display text-[24px] font-bold">Ethiopian Airlines</span>
+                    <span class="font-section-display text-[24px] font-bold">Safaricom ET</span>
+                    <span class="font-section-display text-[24px] font-bold">Heineken Ethiopia</span>
+                    <span class="font-section-display text-[24px] font-bold">Dashen Bank</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Areas -->
+        <section class="bg-surface py-section-gap px-grid-margin">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="flex justify-between items-end mb-16">
+                    <h2 class="font-section-display text-section-display text-primary">Practice Areas</h2>
+                    <p class="font-body-main text-body-main text-on-surface-variant max-w-sm">Specialized legal services tailored for the Ethiopian market and beyond.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 border-t border-outline-variant">
+                    <!-- Area 01 -->
+                    <div class="p-12 border-b md:border-b-0 md:border-r border-outline-variant group hover:bg-surface-container transition-colors">
+                        <div class="font-eyebrow text-eyebrow text-on-primary-container mb-12">01</div>
+                        <h3 class="font-body-main text-[22px] font-semibold text-primary mb-4">Corporate Law</h3>
+                        <p class="font-body-main text-body-main text-on-surface-variant mb-8 h-12 overflow-hidden">
+                            Strategic advice on formation, governance, and complex mergers for major enterprises.
+                        </p>
+                        <a class="text-secondary font-body-main text-body-main flex items-center group-hover:gap-2 transition-all" href="#">
+                            Learn More <span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                    <!-- Area 02 -->
+                    <div class="p-12 border-b md:border-b-0 md:border-r border-outline-variant group hover:bg-surface-container transition-colors">
+                        <div class="font-eyebrow text-eyebrow text-on-primary-container mb-12">02</div>
+                        <h3 class="font-body-main text-[22px] font-semibold text-primary mb-4">Commercial Litigation</h3>
+                        <p class="font-body-main text-body-main text-on-surface-variant mb-8 h-12 overflow-hidden">
+                            Robust representation in high-stakes commercial disputes and arbitration proceedings.
+                        </p>
+                        <a class="text-secondary font-body-main text-body-main flex items-center group-hover:gap-2 transition-all" href="#">
+                            Learn More <span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                    <!-- Area 03 -->
+                    <div class="p-12 border-b md:border-b-0 border-outline-variant group hover:bg-surface-container transition-colors">
+                        <div class="font-eyebrow text-eyebrow text-on-primary-container mb-12">03</div>
+                        <h3 class="font-body-main text-[22px] font-semibold text-primary mb-4">International Trade Law</h3>
+                        <p class="font-body-main text-body-main text-on-surface-variant mb-8 h-12 overflow-hidden">
+                            Navigating global trade regulations and cross-border investment strategies.
+                        </p>
+                        <a class="text-secondary font-body-main text-body-main flex items-center group-hover:gap-2 transition-all" href="#">
+                            Learn More <span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Highlight -->
+        <section class="bg-surface-container-low py-section-gap px-grid-margin">
+            <div class="max-w-[1280px] mx-auto text-center">
+                <div class="mb-12 font-eyebrow text-eyebrow text-secondary uppercase tracking-[2px]">IMPACT & RESULTS</div>
+                <div class="font-hero-display text-[80px] md:text-[120px] text-primary leading-none mb-8">
+                    2x
+                </div>
+                <h2 class="font-section-display text-section-display text-primary mb-8 max-w-3xl mx-auto">
+                    increase in consultation bookings after website launch.
+                </h2>
+                <div class="max-w-2xl mx-auto">
+                    <p class="font-body-main text-body-main text-on-surface-variant italic mb-6">
+                        "Mesfin & Associates provided us with unmatched clarity during our expansion into the East African market. Their expertise is truly world-class."
+                    </p>
+                    <div class="font-eyebrow text-eyebrow text-primary">MANAGING DIRECTOR, GLOBAL ENERGY CORP</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attorneys Section -->
+        <section class="bg-surface py-section-gap px-grid-margin">
+            <div class="max-w-[1280px] mx-auto">
+                <div class="mb-16">
+                    <h2 class="font-section-display text-section-display text-primary mb-4">Our Attorneys</h2>
+                    <p class="font-body-main text-body-main text-on-surface-variant">Exceptional minds dedicated to legal excellence.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+                    <!-- Profile 1 -->
+                    <div class="group">
+                        <div class="aspect-[3/4] overflow-hidden bg-surface-variant mb-6 rounded-lg grayscale hover:grayscale-0 transition-all duration-700">
+                            <img alt="Saba Mesfin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiRbhWAwajfQwk0yh5HnsIsw4FBToHScC_dGIWJPtPpmReq5_b0XfN4GzeQ-sn2wWsXZWsQKjffJaaWH88wIWB5UwfNjQHMQBr7UW5AhdEMBFXlnrBDePbk3XBn5KSFNOldy2x81F_5le1MV4xWtf4axim1Tk-w0cSMoIkNpGRLrvxPuf_AREQrRZTZ2eWsvjDqvY45nWQ0MaQcyHkgJY4vqRfkTgONjY6_opfK0xoWimWs9A1LZGyrv8Y"/>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-body-main text-[22px] font-semibold text-primary">Saba Mesfin</h4>
+                                <p class="font-label-muted text-label-muted text-on-surface-variant">Managing Partner, Corporate Strategy</p>
+                            </div>
+                            <a class="text-primary hover:text-secondary" href="#">
+                                <span class="material-symbols-outlined">link</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Profile 2 -->
+                    <div class="group">
+                        <div class="aspect-[3/4] overflow-hidden bg-surface-variant mb-6 rounded-lg grayscale hover:grayscale-0 transition-all duration-700">
+                            <img alt="Elias Bekele" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNtcWrmQOLA4wyuCBJUxwdlNyTCi6b5uJkAWUAeTyT_Q2u-nPTPOQUy5KF6lE46oOx1kRBrU-QxBDKTfIbZcyne7T1WJ_0nI3wExj12s5mTl4URICev4G9bqzmTuSSi2qRvty75KnyXrWPE5t_Q74FpxEfFh8Dk2FDcoI2CJg4R4giRBGElJ6plzgCdddd041GSl2H1anDf2DIHZnRKw3D7ebZZND7buAltYue02Tu6DlQBpnWEz2steL_aC8NKrUxaZW5JtqgEFs"/>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-body-main text-[22px] font-semibold text-primary">Elias Bekele</h4>
+                                <p class="font-label-muted text-label-muted text-on-surface-variant">Senior Associate, International Trade</p>
+                            </div>
+                            <a class="text-primary hover:text-secondary" href="#">
+                                <span class="material-symbols-outlined">link</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Profile 3 -->
+                    <div class="group">
+                        <div class="aspect-[3/4] overflow-hidden bg-surface-variant mb-6 rounded-lg grayscale hover:grayscale-0 transition-all duration-700">
+                            <img alt="Hana Tadesse" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJAxoZgd_5iJR5m07RqqPelRBcy0vnneGQIKuEDYbqTQolGyhzhVKW0LLYyqiqCsvJ1L7CE245EaYNVvghp_ihsugacRpiClsSjPctUEYF8lRoRdtLGuYzUELta3SQcUcR9_HO6hY9t0N19sfHV6WgYqeJ4Pq1KAjM6fA4VOU8y_IoD0wRErPjjdBkf-TCY8i0zuqCo3XhaKtktOtAGw6ueI4ioXImodPE7HjEPudYOZvZOxg4NxgD8yrGgCsUdd4UjqdnxzDuqAU"/>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-body-main text-[22px] font-semibold text-primary">Hana Tadesse</h4>
+                                <p class="font-label-muted text-label-muted text-on-surface-variant">Lead Litigator, Commercial Disputes</p>
+                            </div>
+                            <a class="text-primary hover:text-secondary" href="#">
+                                <span class="material-symbols-outlined">link</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-primary text-on-primary py-section-gap px-grid-margin">
+            <div class="max-w-[1280px] mx-auto text-center">
+                <h2 class="font-section-display text-section-display mb-8">Ready to secure your future?</h2>
+                <p class="font-body-main text-body-main text-on-primary-container mb-12 max-w-xl mx-auto">
+                    Contact us today for a comprehensive legal assessment tailored to your business needs.
+                </p>
+                <button class="bg-surface text-primary px-10 py-5 rounded-full font-body-main text-body-main font-semibold hover:bg-secondary-fixed transition-colors">
+                    Book Your Consultation
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary dark:bg-primary text-on-primary border-t border-on-primary-container">
+        <div class="max-w-[1280px] mx-auto py-section-gap px-grid-margin grid grid-cols-1 md:grid-cols-4 gap-grid-gutter">
+            <div class="space-y-6">
+                <div class="font-section-display text-body-main font-semibold text-on-primary">Mesfin & Associates</div>
+                <p class="font-label-muted text-label-muted text-on-primary-container">
+                    Elite legal solutions for a changing world. Based in Addis Ababa, serving the globe.
+                </p>
+            </div>
+            <div class="space-y-6">
+                <h5 class="font-eyebrow text-eyebrow text-secondary uppercase tracking-[1px]">Navigation</h5>
+                <ul class="space-y-4">
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Practice Areas</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Our Attorneys</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Case Results</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Insights</a></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h5 class="font-eyebrow text-eyebrow text-secondary uppercase tracking-[1px]">Legal</h5>
+                <ul class="space-y-4">
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Privacy Policy</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Terms of Service</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Legal Notice</a></li>
+                    <li><a class="font-label-muted text-label-muted text-on-primary-container hover:text-on-primary" href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h5 class="font-eyebrow text-eyebrow text-secondary uppercase tracking-[1px]">Contact</h5>
+                <p class="font-label-muted text-label-muted text-on-primary-container">
+                    Bole Road, Mega Building<br/>
+                    Addis Ababa, Ethiopia<br/><br/>
+                    contact@mesfinlaw.et<br/>
+                    +251 11 661 1234
+                </p>
+            </div>
+        </div>
+        <div class="max-w-[1280px] mx-auto pb-12 px-grid-margin flex flex-col md:flex-row justify-between items-center border-t border-on-primary-container/20 pt-8">
+            <div class="font-label-muted text-label-muted text-on-primary-container mb-4 md:mb-0">
+                © 2024 Mesfin & Associates. All Rights Reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">
+                    <span class="material-symbols-outlined">share</span>
+                </a>
+                <a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">
+                    <span class="material-symbols-outlined">public</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Micro-interaction for navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>

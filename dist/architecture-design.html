@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-fixed": "#e5e2e1",
+                "on-surface-variant": "#444748",
+                "background": "#fbf9f8",
+                "on-secondary-fixed-variant": "#5d4200",
+                "surface-variant": "#e4e2e1",
+                "on-tertiary-fixed": "#231a0f",
+                "surface-tint": "#5f5e5e",
+                "surface-bright": "#fbf9f8",
+                "primary-container": "#1c1b1b",
+                "on-error": "#ffffff",
+                "secondary-fixed": "#ffdea6",
+                "on-surface": "#1b1c1c",
+                "on-secondary": "#ffffff",
+                "inverse-on-surface": "#f3f0f0",
+                "primary-fixed-dim": "#c9c6c5",
+                "on-tertiary": "#ffffff",
+                "outline-variant": "#c4c7c7",
+                "surface-container-low": "#f5f3f2",
+                "on-background": "#1b1c1c",
+                "on-secondary-container": "#715000",
+                "error-container": "#ffdad6",
+                "secondary": "#7b5800",
+                "on-primary-fixed-variant": "#474646",
+                "on-primary": "#ffffff",
+                "tertiary-fixed-dim": "#d4c4b3",
+                "surface-container-high": "#eae8e7",
+                "on-tertiary-fixed-variant": "#504538",
+                "tertiary-fixed": "#f1e0ce",
+                "surface-container-highest": "#e4e2e1",
+                "surface": "#fbf9f8",
+                "on-primary-fixed": "#1c1b1b",
+                "tertiary-container": "#231a0f",
+                "tertiary": "#000000",
+                "on-error-container": "#93000a",
+                "surface-container": "#f0eded",
+                "inverse-surface": "#303030",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#ffc244",
+                "inverse-primary": "#c9c6c5",
+                "on-secondary-fixed": "#271900",
+                "primary": "#000000",
+                "on-tertiary-container": "#908273",
+                "secondary-fixed-dim": "#f9bd3f",
+                "on-primary-container": "#858383",
+                "outline": "#747878",
+                "error": "#ba1a1a",
+                "surface-dim": "#dcd9d9"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "section-gap-mobile": "64px",
+                "section-gap": "120px",
+                "grid-gutter": "24px",
+                "base": "8px",
+                "grid-margin": "40px"
+            },
+            "fontFamily": {
+                "hero-display": ["Inter"],
+                "body-main": ["Inter"],
+                "label-muted": ["Inter"],
+                "hero-display-mobile": ["Inter"],
+                "section-display": ["Inter"],
+                "eyebrow": ["Inter"]
+            },
+            "fontSize": {
+                "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-1.6px", "fontWeight": "600"}],
+                "body-main": ["17px", {"lineHeight": "1.6", "letterSpacing": "-0.2px", "fontWeight": "400"}],
+                "label-muted": ["14px", {"lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "400"}],
+                "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                "section-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "2.0px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hairline-border {
+            border: 0.5px solid #E0DBD3;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fbf9f8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b1c1c;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-main selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/85 dark:bg-surface-container-highest/85 backdrop-blur-xl border-b border-outline-variant transition-all duration-300">
+<div class="flex justify-between items-center w-full px-grid-margin py-base max-w-[1280px] mx-auto">
+<a class="font-hero-display text-label-muted uppercase tracking-widest text-primary dark:text-primary-fixed" href="#">
+                Form Studio Addis
+            </a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-main text-body-main text-primary border-b-2 border-secondary pb-1 cursor-pointer transition-all duration-200" href="#work">Work</a>
+<a class="font-body-main text-body-main text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer transition-all duration-200" href="#studio">Studio</a>
+<a class="font-body-main text-body-main text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer transition-all duration-200" href="#process">Process</a>
+<a class="font-body-main text-body-main text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer transition-all duration-200" href="#contact">Contact</a>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+</div>
+</div>
+</nav>
+<main>
+<section class="relative h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-primary text-white">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A high-end architectural render of a futuristic building in Addis Ababa, featuring modern structural curves and expansive glass facades. The lighting is dramatic, capturing the golden hour glow reflecting off geometric surfaces against a deep twilight sky. The aesthetic is clean, sophisticated, and evokes a sense of international luxury and engineering precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5YJ5AGHvNMPGE9J9ZMkmc8zsl8oYtaN1k951ptL9lAd2jh9GEK6mbywhSeeSNJNsJPhgitOCiSCLtS_bq72cE0My71xWgelNTypngyE1F71saXaeqTUatFceXgsSZNmr3dSFumr1HRO-CNFB-aBw_rXbnkMCETk-sQQthcVdUhkiS1iFXTYVliaS32eFlIInQa3e-QhhbpN52wZ6okBCBIdcK8Tnt88C7jk-lJCwl3YorpiVu2d3KRJE053L2pwB-omETcnD6Lzg"/>
+</div>
+<div class="relative z-10 text-center px-grid-margin max-w-[1280px]">
+<p class="font-eyebrow text-eyebrow uppercase tracking-[2px] mb-6 opacity-90">ARCHITECTURE · INTERIOR · URBAN DESIGN</p>
+<h1 class="font-hero-display text-hero-display max-w-4xl mx-auto mb-12">We design spaces that inspire.</h1>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+<span class="material-symbols-outlined text-white text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<section class="bg-surface-container-low py-section-gap" id="work">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant overflow-hidden">
+<div class="project-card relative group aspect-[4/5] overflow-hidden bg-white border-r border-outline-variant last:border-r-0 cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimal white residential tower against a clear blue sky, emphasizing vertical lines and rhythmic balcony patterns. The photograph is shot from a low angle to highlight the building's height and elegant proportions. The color palette is dominated by pure whites and subtle gray shadows, creating an ultra-modern, serene atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApB2eIGPdyStT7ysYRB6aug0sHbF9t4DK8aJ-HTRMNADElSpmfqf_Bg9GFCLoKdW9HPuyzK0oPvrDqENjYuWJNAThl8ANvHtMOWQjrObybDv-P1rfY0d3tJWNJqBy8Uq1rHXGBuWpcuCbrJ8o66N-PFetgrSK3mnjAuWQiDULC8yRnGlRoXofH9E0KUl9ZAICutBAqRH_pw5EjqDTARiFZLdT0rufQLSBwTs3yunHIIiX3Tw37g80GgOeracsvJTdonOhbRbOtzFU"/>
+<div class="absolute inset-0 bg-secondary-container/90 opacity-0 project-overlay transition-opacity duration-300 flex flex-col justify-center items-center text-on-secondary-fixed">
+<h3 class="font-section-display text-[24px] mb-2">Skyline Residences</h3>
+<p class="font-body-main opacity-80 mb-6">Residential · Bole</p>
+<span class="font-body-main border-b border-on-secondary-fixed">View Project →</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/20 to-transparent group-hover:opacity-0 transition-opacity">
+<p class="font-eyebrow text-white text-eyebrow mb-1">SKYLINE RESIDENCES</p>
+<p class="font-label-muted text-white/70">Residential</p>
+</div>
+</div>
+<div class="project-card relative group aspect-[4/5] overflow-hidden bg-white border-r border-outline-variant last:border-r-0 cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A modern commercial skyscraper in a dense urban environment with a sleek glass curtain wall reflecting the surrounding cityscape. The building features unique cantilevered sections that add architectural interest. The scene is bright and professional, representing high-end corporate design with a minimalist, functional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyun7yv6AaAfwvmYjO7lRAfN1wOIg_tYkZLICEaRCyGISYXwxuxs7ebHtZqJLj22hCiwHVSEeIOoedMmeRGSSwkKP3TGloznbgcJwTtCS-dcHXRJwCRuNkwIPqHfepbsIvcMT74X177GSurpGDxu6fWamRsP_J8fugMPOa6W53TeoimJ0tXBkKjgqJPKFoqSIPJoEbG4IqnsOO2UDK_bJ3UgDl057uggnntUiP_iIz1IbHzkuJLV-PK-9JXigscBbFnivMpWvxj5Q"/>
+<div class="absolute inset-0 bg-secondary-container/90 opacity-0 project-overlay transition-opacity duration-300 flex flex-col justify-center items-center text-on-secondary-fixed">
+<h3 class="font-section-display text-[24px] mb-2">Bole Commercial Tower</h3>
+<p class="font-body-main opacity-80 mb-6">Commercial · Addis Ababa</p>
+<span class="font-body-main border-b border-on-secondary-fixed">View Project →</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/20 to-transparent group-hover:opacity-0 transition-opacity">
+<p class="font-eyebrow text-white text-eyebrow mb-1">BOLE COMMERCIAL TOWER</p>
+<p class="font-label-muted text-white/70">Commercial</p>
+</div>
+</div>
+<div class="project-card relative group aspect-[4/5] overflow-hidden bg-white cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A cultural center featuring organic architectural forms made of sustainable materials like wood and clay-toned masonry. The design integrates traditional Ethiopian vernacular motifs into a contemporary minimalist structure. Warm, diffused natural lighting illuminates the interior courtyards, creating an inviting and culturally resonant public space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSZFlAAQwn-DurL4ojPjaWwGX_Ue8DZSPpsLYByd_LeF_0LqzISpgvG4Fx_73nExXgV-HsVV7O917QrGaH4Yqgsdx81Qh3r1GTmnAmhzWbMFmCcNfMDKzhEQH9f0tXl-XdBZMZ7us8YIYv2k9OWXrhW5WITiQBsr0S-nF7Dhj9wVKDi6ZNM7lpujNgXNZxdnmhqoW6fEClNjTlzkX5_2QdRjDwNgCwmS3GqjdrcPurf9_AcCCyvjTmobXZ2Flpt2ZvLdosvch10FY"/>
+<div class="absolute inset-0 bg-secondary-container/90 opacity-0 project-overlay transition-opacity duration-300 flex flex-col justify-center items-center text-on-secondary-fixed">
+<h3 class="font-section-display text-[24px] mb-2">Yeka Cultural Centre</h3>
+<p class="font-body-main opacity-80 mb-6">Public · Yeka</p>
+<span class="font-body-main border-b border-on-secondary-fixed">View Project →</span>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/20 to-transparent group-hover:opacity-0 transition-opacity">
+<p class="font-eyebrow text-white text-eyebrow mb-1">YEKA CULTURAL CENTRE</p>
+<p class="font-label-muted text-white/70">Cultural</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface py-section-gap overflow-hidden" id="studio">
+<div class="max-w-[1280px] mx-auto px-grid-margin grid grid-cols-1 md:grid-cols-2 items-center gap-grid-gutter">
+<div class="relative">
+<img class="w-full aspect-square object-cover" data-alt="A close-up shot of an architectural physical model made from light balsa wood and acrylic. The model sits on a clean white drafting table in a bright, sunlit studio environment. Sharp shadows emphasize the geometric forms and intricate details of the design, reflecting a process of craftsmanship and technical rigor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzOUAAHzQQlzEMRxY_GXqDvB3zl7DQE2uBMXTIA-DzwXrsb6le-p0LubBScJHT6Lz8asLzvQCE6cefjxlUnKbE3MfIwNCvcTLw8uxyW-TuX5nOYjJQ4m1E51_5X87jbUXUGOhYEbWnyrJ0RcR8ljokGzMnYIUdYyFpHN-AWa2Dr-5CYkFGR2OGQX1PuAY283UZa6PkNJeZSqEjuLt_JcJOkvwsE7-z4pCQLCWDRntSNOWNtJVKevgCT0t9g7GNKRP8aLvMjf1fl5Q"/>
+</div>
+<div class="lg:pl-16">
+<p class="font-eyebrow text-secondary mb-4 tracking-[2px]">THE STUDIO</p>
+<h2 class="font-section-display text-section-display mb-8 text-primary">International-standard design rooted in Ethiopian culture.</h2>
+<p class="font-body-main text-on-surface-variant mb-10 max-w-lg">
+                        We blend rigorous technical standards with an intimate understanding of local heritage. Our studio operates as a laboratory for ideas where every line drawn serves a purpose and every space created tells a story.
+                    </p>
+<div class="flex flex-col gap-2">
+<span class="font-hero-display text-[56px] text-secondary leading-none">+80%</span>
+<p class="font-label-muted text-on-surface-variant uppercase tracking-widest">New client inquiries after launch</p>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-tertiary-container py-section-gap text-on-tertiary" id="process">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-on-tertiary-fixed-variant">
+<div class="relative p-12 border-r border-on-tertiary-fixed-variant last:border-r-0 overflow-hidden group">
+<span class="absolute -bottom-10 -right-10 font-hero-display text-[200px] text-on-tertiary/10 select-none group-hover:text-on-tertiary/20 transition-colors duration-500">01</span>
+<div class="relative z-10">
+<h4 class="font-section-display text-[24px] mb-6 flex items-center gap-4">Concept <span class="material-symbols-outlined text-secondary-fixed">trending_flat</span></h4>
+<p class="font-body-main text-on-tertiary-fixed-variant leading-relaxed">Defining the core vision through research, cultural mapping, and initial spatial explorations.</p>
+</div>
+</div>
+<div class="relative p-12 border-r border-on-tertiary-fixed-variant last:border-r-0 overflow-hidden group">
+<span class="absolute -bottom-10 -right-10 font-hero-display text-[200px] text-on-tertiary/10 select-none group-hover:text-on-tertiary/20 transition-colors duration-500">02</span>
+<div class="relative z-10">
+<h4 class="font-section-display text-[24px] mb-6 flex items-center gap-4">Design <span class="material-symbols-outlined text-secondary-fixed">trending_flat</span></h4>
+<p class="font-body-main text-on-tertiary-fixed-variant leading-relaxed">Developing detailed plans, 3D visualizations, and material selections with technical precision.</p>
+</div>
+</div>
+<div class="relative p-12 overflow-hidden group">
+<span class="absolute -bottom-10 -right-10 font-hero-display text-[200px] text-on-tertiary/10 select-none group-hover:text-on-tertiary/20 transition-colors duration-500">03</span>
+<div class="relative z-10">
+<h4 class="font-section-display text-[24px] mb-6 flex items-center gap-4">Build <span class="material-symbols-outlined text-secondary-fixed">check_circle</span></h4>
+<p class="font-body-main text-on-tertiary-fixed-variant leading-relaxed">Strategic oversight and collaboration to ensure the final structure mirrors the architectural intent.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface py-section-gap" id="contact">
+<div class="max-w-[1280px] mx-auto px-grid-margin text-center">
+<h2 class="font-section-display text-section-display mb-8">Ready to start your next project?</h2>
+<a class="inline-flex items-center gap-4 bg-primary text-white px-10 py-5 rounded-full font-body-main hover:bg-secondary transition-all duration-300 group" href="mailto:info@formstudioaddis.com">
+                    Get in Touch 
+                    <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</section>
+</main>
+<footer class="bg-tertiary-container dark:bg-black w-full px-grid-margin py-section-gap border-t border-on-tertiary-fixed-variant">
+<div class="flex flex-col items-center gap-section-gap w-full">
+<h2 class="font-hero-display text-section-display text-tertiary-fixed-dim text-center w-full block tracking-widest uppercase">
+                FORM STUDIO ADDIS
+            </h2>
+<div class="flex gap-8">
+<a class="font-label-muted text-label-muted text-on-tertiary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Instagram</a>
+<a class="font-label-muted text-label-muted text-on-tertiary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">LinkedIn</a>
+<a class="font-label-muted text-label-muted text-on-tertiary-fixed-variant hover:text-tertiary-fixed transition-colors" href="#">Journal</a>
+</div>
+<p class="font-label-muted text-label-muted text-on-tertiary-fixed-variant">
+                © 2024 Form Studio Addis. All rights reserved.
+            </p>
+</div>
+</footer>
+<script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('py-1');
+                nav.classList.remove('py-base');
+            } else {
+                nav.classList.remove('py-1');
+                nav.classList.add('py-base');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

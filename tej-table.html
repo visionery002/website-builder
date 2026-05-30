@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tej &amp; Table | Fine Ethiopian Dining</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#231a0f",
+                    "surface": "#fbf9f8",
+                    "secondary-fixed": "#ffdea6",
+                    "secondary": "#7b5800",
+                    "tertiary": "#000000",
+                    "primary": "#000000",
+                    "on-tertiary-container": "#908273",
+                    "on-surface": "#1b1c1c",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "outline-variant": "#c4c7c7",
+                    "on-tertiary-fixed-variant": "#504538",
+                    "background": "#fbf9f8",
+                    "on-primary-fixed": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#5d4200",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#ffc244",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#474646",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#271900",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e4e2e1",
+                    "on-secondary-container": "#715000",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container": "#f0eded",
+                    "outline": "#747878",
+                    "on-primary-container": "#858383",
+                    "on-tertiary-fixed": "#231a0f",
+                    "surface-container-highest": "#e4e2e1",
+                    "secondary-fixed-dim": "#f9bd3f",
+                    "on-surface-variant": "#444748",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f5f3f2",
+                    "inverse-surface": "#303030",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed-dim": "#c9c6c5",
+                    "inverse-primary": "#c9c6c5",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-background": "#1b1c1c",
+                    "primary-fixed": "#e5e2e1",
+                    "tertiary-fixed": "#f1e0ce",
+                    "surface-bright": "#fbf9f8",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#d4c4b3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "grid-margin": "40px",
+                    "section-gap-mobile": "64px",
+                    "section-gap": "120px",
+                    "grid-gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "hero-display-mobile": ["Inter"],
+                    "body-main": ["Inter"],
+                    "eyebrow": ["Inter"],
+                    "label-muted": ["Inter"],
+                    "section-display": ["Inter"],
+                    "hero-display": ["Inter"]
+            },
+            "fontSize": {
+                    "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                    "body-main": ["17px", {"lineHeight": "1.6", "letterSpacing": "-0.2px", "fontWeight": "400"}],
+                    "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "2.0px", "fontWeight": "500"}],
+                    "label-muted": ["14px", {"lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "400"}],
+                    "section-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                    "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-1.6px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ethiopian-pattern {
+            background-image: radial-gradient(#c8920e 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.1;
+        }
+        .deep-coffee { background-color: #1A1208; }
+        .ethiopian-gold { color: #C8920E; }
+        .parchment { background-color: #F5F0E8; }
+        .hairline-border { border: 1px solid #E0DBD3; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fbf9f8; }
+        ::-webkit-scrollbar-thumb { background: #1A1208; }
+    </style>
+</head>
+<body class="bg-surface font-body-main text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<nav class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-grid-margin flex justify-between items-center h-20">
+<div class="font-hero-display text-[28px] tracking-tighter text-primary">Tej &amp; Table</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-primary border-b-2 border-secondary font-medium pb-1" href="#">Menu</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Reservations</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Catering</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-medium hover:opacity-80 transition-all duration-300 active:translate-y-[-2px]">
+                Book a Table
+            </button>
+</div>
+</nav>
+<main>
+<section class="relative min-h-screen flex items-center justify-center deep-coffee overflow-hidden pt-20">
+<div class="absolute inset-0 ethiopian-pattern"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#C8920E] to-transparent"></div>
+<div class="max-w-[1280px] mx-auto px-grid-margin relative z-10 text-center">
+<div class="mb-8 inline-block px-4 py-1 border border-[#C8920E]/30 rounded-full">
+<span class="font-eyebrow text-eyebrow text-[#C8920E]">AUTHENTIC HERITAGE</span>
+</div>
+<h1 class="font-hero-display text-hero-display text-white mb-6">
+                    Fine Ethiopian Dining,<br/>Reimagined
+                </h1>
+<p class="text-white/80 text-xl max-w-2xl mx-auto mb-10 font-body-main">
+                    Experience the architectural beauty of traditional flavors elevated through modern Michelin-standard techniques. Reserve your table or plan your next event.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="bg-white text-primary px-10 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all">
+                        Reserve a Table
+                    </button>
+<button class="bg-transparent border border-white text-white px-10 py-4 rounded-full font-semibold hover:bg-white/10 transition-all">
+                        View Menu
+                    </button>
+</div>
+</div>
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white/40 animate-bounce">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</section>
+<section class="parchment py-16 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-grid-gutter text-center">
+<div class="flex flex-col items-center">
+<span class="font-hero-display text-section-display ethiopian-gold">+45%</span>
+<span class="font-eyebrow text-eyebrow uppercase mt-2">Monthly Revenue Growth</span>
+</div>
+<div class="flex flex-col items-center border-y md:border-y-0 md:border-x border-outline-variant/30 py-8 md:py-0">
+<span class="material-symbols-outlined ethiopian-gold text-4xl mb-2">event_available</span>
+<span class="font-body-main font-bold text-xl">Online reservations launched</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-hero-display text-section-display ethiopian-gold">4.9★</span>
+<span class="font-eyebrow text-eyebrow uppercase mt-2">Average Guest Rating</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-section-gap bg-surface">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="font-eyebrow text-eyebrow text-secondary uppercase tracking-widest block mb-4">The Collection</span>
+<h2 class="font-section-display text-section-display text-primary">Signature Dishes</h2>
+</div>
+<a class="text-primary font-medium hover:underline underline-offset-8" href="#">Explore Full Menu</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant/30 hairline-border">
+<div class="bg-white p-8 group cursor-pointer transition-colors hover:bg-surface">
+<div class="aspect-square mb-8 overflow-hidden">
+<img alt="Signature Kitfo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A top-down professional food photography shot of a gourmet Ethiopian Kitfo dish. The finely minced raw beef is seasoned with mitmita and niter kibbeh, presented in a minimalist ceramic bowl. It is garnished with crumbled ayibe cheese and fresh herbs, sitting on a crisp white surface with high-key lighting. The style is modern Michelin-starred plating with a clean, luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXxlvjbFSRU-PKY-B7_Ler5mdAUb8RYjstul3lKZP1T8Q_SjiafLxc7CDjhn8yjZ_BJaZnK31wmAXth5LhkFR-OM9vDSfT7v0W05tEH0xukeBtbj4aMA6klGB9l5MeKhQX29fqaCZ5Gha91vpQZLbQAAaMcaiWPAOL1VQaFU_05UjnbThujqhtfPAGswMkd8IV9VCcx7sqxCXAmV2O70yoTRHpj0G_kaK1jd8gsQEkossacp90WoIAlMVwaZ6g9IcGgAAjbPGaIuA"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-section-display text-2xl">Signature Kitfo</h3>
+<span class="font-bold text-secondary">850 ETB</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                            Premium hand-minced beef, infused with highland mitmita and clarified herbal butter. Served with house-made ayibe and fresh gomen.
+                        </p>
+<div class="flex items-center text-primary font-semibold text-xs tracking-widest uppercase">
+                            View Details <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="bg-white p-8 group cursor-pointer transition-colors hover:bg-surface">
+<div class="aspect-square mb-8 overflow-hidden">
+<img alt="Doro Wat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up shot of a sophisticated Doro Wat chicken stew, showcasing deep mahogany-colored berbere sauce and a perfectly cooked hard-boiled egg. The dish is presented on a minimalist piece of hand-rolled injera. The lighting is soft and atmospheric, highlighting the rich textures and organic colors of the spices. The background is a muted parchment tone, maintaining a high-end architectural dining feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE38GMOwnnlXVNp56FknBYRHqaCNFzd6NleHKtvxYrpwcPP2QYTNlOSS4vZXCycEakjxuUYadT3tsRsBNhLD5u5GdzSD9sslTJXQhV8Qe6fxwMTl_EpjGTq5LtTR7CHlLlm6BI7xse7Y2Vb7cmY3IswoVq6O2sTSBK2hkL1vh4KmpSEr9A8UkGpYi2OQ3f9ggUIr_nu8SaFy4V2DZaN1LveeeRWKU7l_kpSLsxXksIi2e1OpSO6UZnB6mPwhtFCqsk-wIlWUcMplA"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-section-display text-2xl">Aged Doro Wat</h3>
+<span class="font-bold text-secondary">1,200 ETB</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                            Slow-simmered organic chicken in a 48-hour berbere reduction, finished with a heritage spice blend and organic farm eggs.
+                        </p>
+<div class="flex items-center text-primary font-semibold text-xs tracking-widest uppercase">
+                            View Details <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="bg-white p-8 group cursor-pointer transition-colors hover:bg-surface">
+<div class="aspect-square mb-8 overflow-hidden">
+<img alt="Beyaynetu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An artistic presentation of a Vegan Beyaynetu platter, featuring vibrant mounds of lentils, split peas, and cabbage arranged geometrically on a pristine white plate. The colors are vivid greens, deep oranges, and bright yellows. The photography uses a narrow depth of field in a bright, airy studio setting, emphasizing the precision of the vegetable cuts and the fresh, modern take on traditional Ethiopian fasting food." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu4yGYDNj6glwqTU30zx8i2lQ-_2gGNNqhSTT100zaO2KtnaiLaNhohPnOGAYhg7VVPRniW4C__H0E6mhnlCpz5yppJ4TihIFX5IFcSWrR9DmE5ATAZfxgZLplHk6FN7NVI15BjwwHcfLSE46nPDv1RMZGMRuas8mLg0ygqZJdHWTcbgZdlF7X-FFFhxkgZ73S-KUz8pZXD1J2cfmmQD566DVzReeUyrrkD6ug4O2bhLnYHcwsdEVjrfi29YIsvZGtb5w6vumVrao"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-section-display text-2xl">Garden Beyaynetu</h3>
+<span class="font-bold text-secondary">650 ETB</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">
+                            A curated selection of seasonal legumes and vegetables, showcasing the diversity of highland produce and artisanal cold-pressed oils.
+                        </p>
+<div class="flex items-center text-primary font-semibold text-xs tracking-widest uppercase">
+                            View Details <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="deep-coffee relative py-section-gap overflow-hidden">
+<div class="absolute inset-0 ethiopian-pattern"></div>
+<div class="max-w-[1280px] mx-auto px-grid-margin relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="aspect-[4/5] border border-white/20 p-4">
+<img alt="Catering Event" class="w-full h-full object-cover" data-alt="A high-end catering event setup in a minimalist, modern architectural space. Long tables are decorated with pristine white linens and Ethiopian gold accents. Professional servers in black attire are elegantly arranging glassware. The lighting is warm and cinematic, reflecting off polished surfaces. The overall mood is one of exclusive, world-class event planning for corporate or high-profile private gatherings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADL5wZY-bkzwGVIZsVHYNVfVQQ4flNlEwCZhjZKgcTwX4VFcD9_tFIXTMQay-RCBoCvMzx_o5aK39f6ze-wNyFfHFe2M2YsQgg-W_hK7wBYIscOmukHB4Ub-w3LQq54yK2e-E9vjMLWukyqBiw-0pTn4Uf6SujxX3dMK0jT_TNthqVvZhHekx2WMYOkJyWSO-sdbu4W3Vbbs4isNGs01z2IVEESAvRUfvSwPRBfM_U1n4YB3-ab6iN0qW1IxsD5gwEoyCxMxCQdNA"/>
+</div>
+<div class="absolute -bottom-8 -right-8 bg-[#C8920E] p-12 hidden md:block">
+<span class="font-hero-display text-4xl text-black">Private<br/>Events</span>
+</div>
+</div>
+<div>
+<span class="font-eyebrow text-eyebrow text-[#C8920E] uppercase mb-6 block">Beyond the Restaurant</span>
+<h2 class="font-section-display text-section-display text-white mb-8">Planning an event?</h2>
+<p class="text-white/70 text-lg mb-12 font-body-main leading-relaxed">
+                            From intimate corporate lunches to grand cultural celebrations, Tej &amp; Table brings the artistry of Ethiopian fine dining to your chosen venue. Our catering team handles every detail with architectural precision and legendary hospitality.
+                        </p>
+<ul class="space-y-6 mb-12">
+<li class="flex items-center text-white/90">
+<span class="material-symbols-outlined text-[#C8920E] mr-4">check_circle</span>
+                                Bespoke Heritage Menus
+                            </li>
+<li class="flex items-center text-white/90">
+<span class="material-symbols-outlined text-[#C8920E] mr-4">check_circle</span>
+                                Professional Sommelier Service
+                            </li>
+<li class="flex items-center text-white/90">
+<span class="material-symbols-outlined text-[#C8920E] mr-4">check_circle</span>
+                                Custom Floral &amp; Table Design
+                            </li>
+</ul>
+<button class="bg-[#C8920E] text-black px-12 py-4 rounded-full font-bold hover:scale-[1.02] transition-transform">
+                            Get a Catering Quote
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-section-gap bg-white">
+<div class="max-w-[800px] mx-auto px-grid-margin text-center">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase mb-4 block">Table Service</span>
+<h2 class="font-section-display text-section-display text-primary mb-12">Secure Your Experience</h2>
+<form class="space-y-12 text-left">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="border-b border-outline-variant focus-within:border-primary transition-colors py-2">
+<label class="font-eyebrow text-[10px] text-on-surface-variant uppercase block mb-1">Date</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-lg" type="date"/>
+</div>
+<div class="border-b border-outline-variant focus-within:border-primary transition-colors py-2">
+<label class="font-eyebrow text-[10px] text-on-surface-variant uppercase block mb-1">Time</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-lg appearance-none">
+<option>18:00</option>
+<option>19:00</option>
+<option>20:00</option>
+<option>21:00</option>
+</select>
+</div>
+<div class="border-b border-outline-variant focus-within:border-primary transition-colors py-2">
+<label class="font-eyebrow text-[10px] text-on-surface-variant uppercase block mb-1">Guests</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-lg appearance-none">
+<option>2 Guests</option>
+<option>4 Guests</option>
+<option>6 Guests</option>
+<option>Private Dining (8+)</option>
+</select>
+</div>
+</div>
+<div class="border-b border-outline-variant focus-within:border-primary transition-colors py-2">
+<label class="font-eyebrow text-[10px] text-on-surface-variant uppercase block mb-1">Full Name</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-lg placeholder:text-outline-variant" placeholder="Abebe Bikila" type="text"/>
+</div>
+<div class="text-center pt-8">
+<button class="bg-primary text-white px-16 py-5 rounded-full font-bold hover:bg-black/90 transition-all w-full md:w-auto" type="submit">
+                            Confirm Reservation Request
+                        </button>
+<p class="mt-6 text-on-surface-variant text-sm">
+                            Need immediate assistance? Call us at <span class="font-bold text-primary">+251 11 123 4567</span>
+</p>
+</div>
+</form>
+</div>
+</section>
+</main>
+<footer class="w-full py-section-gap bg-surface-container-low border-t border-outline-variant/20">
+<div class="max-w-[1280px] mx-auto px-grid-margin grid grid-cols-1 md:grid-cols-3 gap-grid-gutter">
+<div class="space-y-6">
+<div class="font-hero-display text-section-display text-primary">Tej &amp; Table</div>
+<p class="text-on-surface-variant max-w-xs">
+                    Redefining the boundaries of Ethiopian cuisine through precision, passion, and heritage.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<h4 class="font-bold mb-6 text-primary">Explore</h4>
+<ul class="space-y-4 font-label-muted text-label-muted">
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Menu</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Wine List</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Reservations</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Catering</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-primary">Connect</h4>
+<ul class="space-y-4 font-label-muted text-label-muted">
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Hours</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary hover:underline decoration-secondary decoration-2 underline-offset-4 transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="space-y-6 md:text-right">
+<h4 class="font-bold text-primary">Location</h4>
+<p class="text-on-surface-variant">
+                    Bole Road, Africa Avenue<br/>
+                    Addis Ababa, Ethiopia
+                </p>
+<div class="flex md:justify-end gap-4">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">camera</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">public</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-grid-margin mt-20 pt-8 border-t border-outline-variant/10">
+<p class="text-label-muted font-label-muted text-on-surface-variant">
+                © 2024 Tej &amp; Table. Crafted with precision.
+            </p>
+</div>
+</footer>
+<script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const heroText = document.querySelector('h1');
+            const x = (window.innerWidth / 2 - e.pageX) / 50;
+            const y = (window.innerHeight / 2 - e.pageY) / 50;
+            if (heroText) {
+                heroText.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ETHIO-TECH | Pioneering Ethiopia's Digital Transformation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#5f5e5e",
+                        "inverse-surface": "#303030",
+                        "surface-variant": "#e4e2e1",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-container": "#908273",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-primary-fixed": "#1c1b1b",
+                        "secondary-container": "#ffc244",
+                        "tertiary-container": "#231a0f",
+                        "primary-container": "#1c1b1b",
+                        "on-surface-variant": "#444748",
+                        "tertiary-fixed-dim": "#d4c4b3",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "outline": "#747878",
+                        "on-primary-container": "#858383",
+                        "background": "#fbf9f8",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f5f3f2",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "secondary": "#7b5800",
+                        "on-surface": "#1b1c1c",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#231a0f",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c4c7c7",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-container": "#715000",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary-fixed": "#271900",
+                        "primary": "#000000",
+                        "on-background": "#1b1c1c",
+                        "surface-bright": "#fbf9f8",
+                        "surface-dim": "#dcd9d9",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#f9bd3f",
+                        "on-tertiary-fixed-variant": "#504538",
+                        "inverse-primary": "#c9c6c5",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#f1e0ce",
+                        "secondary-fixed": "#ffdea6",
+                        "on-error": "#ffffff",
+                        "ethio-gold": "#C8920E",
+                        "deep-coffee": "#1A1208",
+                        "parchment": "#F5F0E8",
+                        "ink-black": "#000000",
+                        "hairline": "#E0DBD3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "section-gap-mobile": "64px",
+                        "base": "8px",
+                        "grid-margin": "40px",
+                        "grid-gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "section-display": ["Inter"],
+                        "label-muted": ["Inter"],
+                        "hero-display": ["Inter"],
+                        "eyebrow": ["Inter"],
+                        "body-main": ["Inter"],
+                        "hero-display-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "section-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}],
+                        "label-muted": ["14px", {"lineHeight": "20px", "letterSpacing": "0px", "fontWeight": "400"}],
+                        "hero-display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-1.6px", "fontWeight": "600"}],
+                        "eyebrow": ["11px", {"lineHeight": "16px", "letterSpacing": "2.0px", "fontWeight": "500"}],
+                        "body-main": ["17px", {"lineHeight": "1.6", "letterSpacing": "-0.2px", "fontWeight": "400"}],
+                        "hero-display-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-1.0px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hairline-border {
+            border: 1px solid #E0DBD3;
+        }
+        .hairline-b {
+            border-bottom: 1px solid #E0DBD3;
+        }
+        .hairline-r {
+            border-right: 1px solid #E0DBD3;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #C8920E;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-main text-on-surface antialiased overflow-x-hidden">
+<header class="fixed top-0 w-full z-50 glass-nav bg-surface/85 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-grid-margin py-4 flex justify-between items-center">
+<div class="font-section-display text-section-display font-bold text-ink-black tracking-tighter text-[24px]">
+                ETHIO-TECH
+            </div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="font-label-muted text-on-surface-variant hover:text-ethio-gold transition-colors duration-300 relative group" href="#capabilities">Capabilities</a>
+<a class="font-label-muted text-on-surface-variant hover:text-ethio-gold transition-colors duration-300 relative group" href="#ecosystem">Ecosystem</a>
+<a class="font-label-muted text-on-surface-variant hover:text-ethio-gold transition-colors duration-300 relative group" href="#innovation">Innovation</a>
+<a class="font-label-muted text-on-surface-variant hover:text-ethio-gold transition-colors duration-300 relative group" href="#contact">Contact</a>
+</nav>
+<button class="bg-ink-black text-white px-8 py-3 rounded-full font-label-muted hover:opacity-80 transition-opacity">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="mt-[80px]">
+<section class="max-w-[1280px] mx-auto px-grid-margin py-section-gap flex flex-col items-center text-center">
+<span class="font-eyebrow text-eyebrow text-on-surface-variant mb-6 tracking-[0.2em] uppercase">ENGINEERING THE FUTURE</span>
+<h1 class="font-hero-display text-hero-display-mobile md:text-hero-display text-ink-black mb-8 max-w-4xl">
+                Pioneering Ethiopia's Digital Transformation
+            </h1>
+<p class="font-body-main text-on-surface-variant max-w-2xl mb-12 text-[20px] leading-relaxed">
+                We bridge international precision with local heritage to build world-class digital solutions grounded in the unique cultural identity of Ethiopia.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-ink-black text-white px-10 py-4 rounded-full font-label-muted hover:translate-y-[-2px] transition-transform">
+                    View Ecosystem
+                </button>
+<button class="border border-ink-black text-ink-black px-10 py-4 rounded-full font-label-muted hover:bg-ink-black/5 transition-colors">
+                    Our Story
+                </button>
+</div>
+</section>
+<section class="bg-parchment py-20 border-y hairline-border">
+<div class="max-w-[1280px] mx-auto px-grid-margin">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div class="flex flex-col gap-2">
+<span class="font-hero-display text-[48px] text-ink-black">50+</span>
+<span class="font-eyebrow text-on-surface-variant uppercase tracking-widest">Enterprise Partners</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-hero-display text-[48px] text-ink-black">10M+</span>
+<span class="font-eyebrow text-on-surface-variant uppercase tracking-widest">Users Impacted</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-hero-display text-[48px] text-ink-black">15+</span>
+<span class="font-eyebrow text-on-surface-variant uppercase tracking-widest">Proprietary Platforms</span>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-[1280px] mx-auto px-grid-margin py-section-gap" id="capabilities">
+<div class="flex flex-col mb-16">
+<span class="font-eyebrow text-eyebrow text-on-surface-variant mb-4 tracking-[0.2em] uppercase">SERVICES</span>
+<h2 class="font-section-display text-section-display text-ink-black">Digital Core Capabilities</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 border-l hairline-border">
+<div class="p-12 border-r border-b md:border-b-0 hairline-border group hover:bg-parchment/50 transition-colors">
+<div class="mb-8">
+<span class="material-symbols-outlined text-[40px] text-ink-black" data-icon="cloud_done">cloud_done</span>
+</div>
+<h3 class="font-section-display text-[24px] mb-4 text-ink-black">Cloud Infrastructure</h3>
+<p class="font-body-main text-on-surface-variant mb-8">Secure, scalable, and localized cloud solutions designed to power the next generation of Ethiopian enterprise operations.</p>
+<a class="text-ethio-gold font-label-muted flex items-center gap-2 hover:translate-x-1 transition-transform" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="p-12 border-r border-b md:border-b-0 hairline-border group hover:bg-parchment/50 transition-colors">
+<div class="mb-8">
+<span class="material-symbols-outlined text-[40px] text-ink-black" data-icon="payments">payments</span>
+</div>
+<h3 class="font-section-display text-[24px] mb-4 text-ink-black">Fintech Solutions</h3>
+<p class="font-body-main text-on-surface-variant mb-8">Revolutionizing financial access through seamless payment gateways and integrated digital banking ecosystems for everyone.</p>
+<a class="text-ethio-gold font-label-muted flex items-center gap-2 hover:translate-x-1 transition-transform" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="p-12 border-r hairline-border group hover:bg-parchment/50 transition-colors">
+<div class="mb-8">
+<span class="material-symbols-outlined text-[40px] text-ink-black" data-icon="analytics">analytics</span>
+</div>
+<h3 class="font-section-display text-[24px] mb-4 text-ink-black">AI &amp; Data Insights</h3>
+<p class="font-body-main text-on-surface-variant mb-8">Leveraging advanced machine learning to transform raw data into actionable intelligence for regional development and growth.</p>
+<a class="text-ethio-gold font-label-muted flex items-center gap-2 hover:translate-x-1 transition-transform" href="#">
+                        Learn more <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-deep-coffee text-white overflow-hidden" id="ecosystem">
+<div class="max-w-[1280px] mx-auto px-grid-margin grid grid-cols-1 lg:grid-cols-2 gap-0">
+<div class="py-24 pr-12">
+<span class="font-eyebrow text-on-tertiary-container mb-6 tracking-[0.2em] uppercase block">THE ECOSYSTEM</span>
+<h2 class="font-section-display text-hero-display-mobile md:text-section-display mb-8">A Unified Digital Frontier</h2>
+<p class="text-on-tertiary-container font-body-main text-[18px] mb-12 leading-relaxed">
+                        Our interconnected platforms create a symbiotic environment where technology serves the people. From rural connectivity to urban logistics, we build the bridges that carry the future of Ethiopia.
+                    </p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-ethio-gold" data-icon="hub">hub</span>
+<div>
+<span class="font-label-muted block mb-1">Interconnected Network</span>
+<p class="text-sm text-on-tertiary-container">Proprietary protocols ensuring data sovereignty.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-ethio-gold" data-icon="diversity_3">diversity_3</span>
+<div>
+<span class="font-label-muted block mb-1">Cultural Integration</span>
+<p class="text-sm text-on-tertiary-container">UI/UX optimized for local contexts and languages.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="relative h-[400px] lg:h-full min-h-[500px]">
+<img alt="Digital Transformation Visual" class="absolute inset-0 w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBKFgN5AqPic8ulVrZ-HrAsLKKUsYBM91ykCkdTC-SI_doPx19_VgO2-hb-v5f3VfhUHuqer87GdnPQeDKiO0s5v_mQuYnwwhb7uVxKY2vnBUZ1hwDWHjzCPQ8gtaRSjiJFf16fJ7shWPfNqbm5Y0Pn0BSJjJhX9Lc_g55gT7mu32ohM-HNGILRtteCaWbKvIb1AQIC00Y685tgC6IctOrvU_2P7Bnc6QBVrNYUN1y5q7jJPOOycMPkVHZ_Zs6aXGe1s9bQrVTKao"/>
+<div class="absolute inset-0 bg-gradient-to-r from-deep-coffee via-transparent to-transparent"></div>
+</div>
+</div>
+</section>
+<section class="max-w-[1280px] mx-auto px-grid-margin py-section-gap text-center" id="innovation">
+<span class="font-eyebrow text-eyebrow text-on-surface-variant mb-12 tracking-[0.2em] uppercase block">THE RESULT</span>
+<div class="max-w-4xl mx-auto">
+<blockquote class="font-section-display text-[40px] md:text-section-display text-ink-black mb-8 leading-tight">
+                    "250% increase in operational efficiency through digital integration."
+                </blockquote>
+<div class="h-px w-24 bg-ethio-gold mx-auto mb-8"></div>
+<cite class="font-label-muted not-italic text-on-surface-variant uppercase tracking-widest">— Annual Innovation Report 2024</cite>
+</div>
+</section>
+<section class="px-grid-margin mb-20" id="contact">
+<div class="max-w-[1280px] mx-auto bg-deep-coffee rounded-xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+<div class="p-12 md:p-20 flex flex-col justify-between">
+<div>
+<span class="font-eyebrow text-on-tertiary-container mb-6 tracking-[0.2em] uppercase block">INQUIRY</span>
+<h2 class="font-section-display text-white mb-8">Ready to evolve?</h2>
+<p class="text-on-tertiary-container font-body-main mb-12">Discuss your project with our engineering leads and discover the potential of world-class digital infrastructure.</p>
+</div>
+<div class="flex flex-col gap-6">
+<a class="flex items-center gap-4 text-white hover:text-ethio-gold transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span>Telegram: @EthioTech_Official</span>
+</a>
+<a class="flex items-center gap-4 text-white hover:text-ethio-gold transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span>hello@ethio-tech.com</span>
+</a>
+</div>
+</div>
+<div class="bg-white/5 p-12 md:p-20 backdrop-blur-sm">
+<form class="space-y-8">
+<div>
+<label class="block font-eyebrow text-on-tertiary-container uppercase tracking-widest mb-2">FullName</label>
+<input class="w-full bg-transparent border-b border-on-tertiary-container/30 py-4 focus:border-ethio-gold focus:ring-0 text-white placeholder-on-tertiary-container/50 outline-none transition-colors" placeholder="Abebe Bikila" type="text"/>
+</div>
+<div>
+<label class="block font-eyebrow text-on-tertiary-container uppercase tracking-widest mb-2">Organization</label>
+<input class="w-full bg-transparent border-b border-on-tertiary-container/30 py-4 focus:border-ethio-gold focus:ring-0 text-white placeholder-on-tertiary-container/50 outline-none transition-colors" placeholder="Company Name" type="text"/>
+</div>
+<div>
+<label class="block font-eyebrow text-on-tertiary-container uppercase tracking-widest mb-2">Interest</label>
+<select class="w-full bg-transparent border-b border-on-tertiary-container/30 py-4 focus:border-ethio-gold focus:ring-0 text-white appearance-none outline-none transition-colors cursor-pointer">
+<option class="bg-deep-coffee">Fintech Solutions</option>
+<option class="bg-deep-coffee">Cloud Infrastructure</option>
+<option class="bg-deep-coffee">AI Strategy</option>
+</select>
+</div>
+<button class="w-full bg-white text-ink-black py-5 rounded-full font-label-muted uppercase tracking-widest hover:bg-ethio-gold hover:text-white transition-all">
+                            Send Inquiry
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-parchment border-t hairline-border">
+<div class="max-w-[1280px] mx-auto px-grid-margin py-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-2 md:col-span-1">
+<div class="font-section-display text-[24px] font-bold text-ink-black tracking-tighter mb-8">
+                        ETHIO-TECH
+                    </div>
+<p class="font-label-muted text-on-surface-variant max-w-[200px]">
+                        Leading Ethiopia into the global digital economy with pride and precision.
+                    </p>
+</div>
+<div>
+<h4 class="font-eyebrow text-ink-black mb-6 uppercase tracking-widest">Platform</h4>
+<ul class="space-y-4 font-label-muted text-on-surface-variant">
+<li><a class="hover:text-ink-black" href="#">Capabilities</a></li>
+<li><a class="hover:text-ink-black" href="#">Ecosystem</a></li>
+<li><a class="hover:text-ink-black" href="#">Security</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-eyebrow text-ink-black mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4 font-label-muted text-on-surface-variant">
+<li><a class="hover:text-ink-black" href="#">Our Story</a></li>
+<li><a class="hover:text-ink-black" href="#">Careers</a></li>
+<li><a class="hover:text-ink-black" href="#">Ethics</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-eyebrow text-ink-black mb-6 uppercase tracking-widest">Legal</h4>
+<ul class="space-y-4 font-label-muted text-on-surface-variant">
+<li><a class="hover:text-ink-black" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-ink-black" href="#">Terms of Service</a></li>
+<li><a class="hover:text-ink-black" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t hairline-border flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="font-label-muted text-on-surface-variant">© 2024 ETHIO-TECH. All rights reserved.</p>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-ink-black transition-colors font-label-muted" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-ink-black transition-colors font-label-muted" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav-underline');
+                link.classList.remove('text-ink-black');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active-nav-underline');
+                    link.classList.add('text-ink-black');
+                }
+            });
+        });
+
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+            });
+        });
+    </script>
+</body></html>
