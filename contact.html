@@ -225,13 +225,61 @@
 
   <script type="module" src="./src/main.js"></script>
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault()
-      const fb = document.getElementById('form-feedback')
-      fb.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.'
-      fb.style.display = 'block'
-      this.reset()
-    })
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const fb = document.getElementById('form-feedback');
+      
+      // Store original button text and set loading state
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Recording Order...';
+      submitBtn.disabled = true;
+      
+      // Clear feedback
+      fb.style.display = 'none';
+      fb.style.color = 'var(--green)';
+
+      // Collect form values
+      const formData = {
+        name: document.getElementById('name').value,
+        business: document.getElementById('business').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        projectType: document.getElementById('project-type').value,
+        message: document.getElementById('message').value
+      };
+
+      try {
+        const response = await fetch('http://localhost:5001/api/clients', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          fb.textContent = '✓ Order received! Your inquiry has been successfully saved, and we will contact you shortly.';
+          fb.style.color = 'var(--green)';
+          fb.style.display = 'block';
+          this.reset();
+        } else {
+          throw new Error(data.error || 'Failed to submit order.');
+        }
+      } catch (err) {
+        console.error('Error submitting form:', err);
+        fb.textContent = `❌ Error: ${err.message || 'Could not connect to the backend server. Please make sure your server is running.'}`;
+        fb.style.color = 'red';
+        fb.style.display = 'block';
+      } finally {
+        // Restore button state
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
