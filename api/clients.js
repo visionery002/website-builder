@@ -95,6 +95,8 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('❌ Database insertion error:', error);
-    return res.status(500).json({ error: 'Failed to save client order to database.' });
+    return res.status(500).json({ 
+      error: `Database error: ${error.message || error}` 
+    });
   }
 }
