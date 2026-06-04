@@ -3,9 +3,731 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Client Dashboard — Ethiopian Websites</title>
+  <title>Client Portal — Ethiopian Websites</title>
   <meta name="description" content="Track your website project status, milestones, invoices, and updates." />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-DEyg-XX0.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-black: #000000;
+      --gold: #C5A059;
+      --gold-dark: #A8843E;
+      --green: #006747;
+      --white: #FFFFFF;
+      --parchment: #F5F0E8;
+      --surface: #F8F9FA;
+      --surface-container: #f2ede5;
+      --on-surface: #1d1c17;
+      --on-surface-variant: #444748;
+      --body-text: #3D3D3D;
+      --muted: #7A7A7A;
+      --hairline: #E0DBD3;
+      --error-red: #B91C1C;
+      --error-light: #ffdad6;
+
+      --font-headline: 'Hanken Grotesk', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --sidebar-width: 240px;
+      --gutter: 24px;
+      --margin-desktop: 48px;
+      --margin-mobile: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--body-text);
+      background: var(--white);
+    }
+
+    /* Login Screen */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--margin-desktop);
+      background: linear-gradient(135deg, var(--white) 0%, var(--parchment) 100%);
+    }
+
+    .login-container {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .login-header h1 {
+      font-family: var(--font-headline);
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--primary-black);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .login-header p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input {
+      padding: 14px 16px;
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      background: var(--surface);
+      color: var(--on-surface);
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--white);
+      box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1);
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary-black);
+      color: var(--white);
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(26, 18, 8, 0.12);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(197, 160, 89, 0.05);
+    }
+
+    .login-error {
+      display: none;
+      color: var(--error-red);
+      font-size: 14px;
+      padding: 12px 16px;
+      background: var(--error-light);
+      border-radius: 4px;
+      border-left: 3px solid var(--error-red);
+    }
+
+    .login-footer {
+      padding-top: 40px;
+      border-top: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    .login-footer p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    /* Dashboard Layout */
+    .dashboard-wrapper {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      min-height: 100vh;
+      gap: 0;
+    }
+
+    .dashboard-sidebar {
+      background: var(--white);
+      border-right: 1px solid var(--hairline);
+      padding: 32px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .sidebar-link {
+      padding: 14px 24px;
+      color: var(--on-surface-variant);
+      font-size: 14px;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-body);
+    }
+
+    .sidebar-link:hover {
+      background: rgba(197, 160, 89, 0.08);
+      color: var(--gold);
+    }
+
+    .sidebar-link.active {
+      background: rgba(197, 160, 89, 0.12);
+      color: var(--gold);
+      border-left-color: var(--gold);
+      font-weight: 600;
+    }
+
+    .dashboard-main {
+      padding: var(--margin-desktop);
+      overflow-y: auto;
+    }
+
+    .dashboard-section {
+      display: none;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .dashboard-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Welcome Card */
+    .welcome-card {
+      background: var(--parchment);
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 48px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .welcome-card h2 {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--primary-black);
+      margin-bottom: 8px;
+    }
+
+    .welcome-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Status Badge */
+    .status-badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 16px 0;
+    }
+
+    .status-badge.discovery,
+    .status-badge.design,
+    .status-badge.development,
+    .status-badge.review,
+    .status-badge.unpaid {
+      background: rgba(197, 160, 89, 0.1);
+      color: var(--gold-dark);
+    }
+
+    .status-badge.launched,
+    .status-badge.paid {
+      background: rgba(0, 103, 71, 0.1);
+      color: var(--green);
+    }
+
+    .status-badge.overdue {
+      background: var(--error-light);
+      color: var(--error-red);
+    }
+
+    /* Section Header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0 32px 0;
+    }
+
+    .section-header h3 {
+      font-family: var(--font-headline);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary-black);
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.2s;
+    }
+
+    .stat-card:hover {
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 12px 24px rgba(26, 18, 8, 0.04);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .stat-value {
+      font-family: var(--font-headline);
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* Next Action Card */
+    .next-action-card {
+      background: var(--surface-container);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 48px;
+    }
+
+    .next-action-card p {
+      color: var(--on-surface);
+      line-height: 1.6;
+    }
+
+    /* Progress Stepper */
+    .step-progress {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 40px 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .step::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 100%;
+      height: 1px;
+      background: var(--hairline);
+      z-index: 0;
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .step.active .step-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .step.completed .step-circle {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+      font-size: 18px;
+    }
+
+    .step.completed::after {
+      background: var(--green);
+    }
+
+    .step-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    /* Milestone Item */
+    .milestone-item {
+      background: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .milestone-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--hairline);
+      border-radius: 4px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      background: var(--white);
+      transition: all 0.2s;
+    }
+
+    .milestone-checkbox.checked {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .milestone-content {
+      flex: 1;
+    }
+
+    .milestone-label {
+      font-weight: 500;
+      color: var(--on-surface);
+      margin-bottom: 4px;
+    }
+
+    .milestone-due {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .milestone-item.completed .milestone-label {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    /* Invoice Card */
+    .invoice-card {
+      background: var(--white);
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .invoice-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 24px rgba(26, 18, 8, 0.04);
+    }
+
+    .invoice-details h4 {
+      font-family: var(--font-headline);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--on-surface);
+      margin-bottom: 8px;
+    }
+
+    .invoice-details p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .invoice-amount {
+      text-align: right;
+    }
+
+    .invoice-amount .amount {
+      font-family: var(--font-headline);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .invoice-amount .currency {
+      font-size: 12px;
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .invoice-summary {
+      background: var(--parchment);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .invoice-summary p {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .invoice-summary .total {
+      font-family: var(--font-headline);
+      font-weight: 600;
+      color: var(--gold);
+      border-top: 1px solid var(--hairline);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    /* Update Item */
+    .update-item {
+      padding: 24px;
+      border-left: 3px solid var(--hairline);
+      margin-left: 16px;
+      margin-bottom: 24px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .update-item::before {
+      content: '';
+      position: absolute;
+      left: -10.5px;
+      top: 12px;
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+    }
+
+    .update-item:hover {
+      border-left-color: var(--gold);
+    }
+
+    .update-from {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .update-date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+    }
+
+    .update-body {
+      color: var(--body-text);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Logout Button */
+    .logout-section {
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .dashboard-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--hairline);
+        padding: 0;
+        height: auto;
+        position: relative;
+        top: 0;
+      }
+
+      .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0;
+      }
+
+      .sidebar-link {
+        flex: 1;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 0;
+        padding: 14px 16px;
+        text-align: center;
+      }
+
+      .sidebar-link.active {
+        border-left: none;
+        border-bottom-color: var(--gold);
+      }
+
+      .dashboard-main {
+        padding: var(--margin-mobile);
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .invoice-card {
+        grid-template-columns: 1fr;
+      }
+
+      .invoice-amount {
+        text-align: left;
+      }
+
+      .step-progress {
+        flex-wrap: wrap;
+      }
+
+      .step {
+        flex: 1 1 50%;
+        min-width: 80px;
+      }
+
+      .step::after {
+        display: none;
+      }
+
+      .step-label {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --margin-desktop: 24px;
+      }
+
+      .login-header h1 {
+        font-size: 28px;
+      }
+
+      .section-header h3 {
+        font-size: 20px;
+      }
+
+      .stat-value {
+        font-size: 28px;
+      }
+    }
+  </style>
   <!-- PostHog Analytics -->
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0===u.POSTHOG_DEBUG&&(u.POSTHOG_DEBUG=!1),o=0;o<e._i.length;o++)g(e._i[o]);e.SV=1.1,e.identify=function(t){e.append({"distinct_id":t})},e.capture=function(t,o){e.append({"event":t,"properties":o})},e.capturePageView=function(){e.capture("$pageview")},e.onready=function(t){e._onReady=t}},e.pageView=function(){e.capturePageView()});}(document,window.posthog||[]);
@@ -15,71 +737,43 @@
       autocapture: true,
     });
   </script>
-  <link rel="stylesheet" crossorigin href="/assets/style-Z72yIo-M.css">
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Ethiopian Websites home">
-        <img src="https://horizons-cdn.hostinger.com/79238a71-0b1a-4ec9-a85e-9d9902c38c83/07e05e0a256fb6e9fe5dc2b0795b630b.jpg" alt="Ethiopian Websites" class="nav__logo-image" />
-      </a>
-      <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav__actions">
-        <span id="client-name-nav" style="color: var(--gold); font-weight: 500;"></span>
-      </div>
-      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- MOBILE NAV -->
-  <div class="nav__mobile">
-    <a href="index.html">Home</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
   <!-- LOGIN SCREEN -->
-  <div id="login-screen" style="min-height: calc(100vh - var(--nav-h)); display: flex; align-items: center; justify-content: center; padding: 40px 20px; background: var(--white);">
-    <div style="max-width: 400px; width: 100%;">
-      <div style="text-align: center; margin-bottom: 48px;">
-        <h1 class="display-md" style="margin-bottom: 12px;">Welcome Back</h1>
-        <p class="subheadline">Enter your email or phone to view your project dashboard.</p>
+  <div id="login-screen">
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Client Portal</h1>
+        <p>Access your project dashboard using your email or phone from your reservation.</p>
       </div>
 
-      <form id="login-form" style="display: flex; flex-direction: column; gap: 24px;">
+      <form id="login-form" class="login-form">
         <div class="form-group">
-          <label class="form-label" for="login-email">Email Address or Phone</label>
+          <label class="form-label">Email or Phone</label>
           <input
-            class="form-input"
             type="text"
             id="login-email"
-            name="login-email"
+            class="form-input"
             placeholder="your@email.com or +251911111111"
             required
           />
         </div>
-        <div>
-          <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">Access Your Dashboard →</button>
-        </div>
-        <p id="login-error" style="display: none; color: #c80000; font-size: 14px; text-align: center;"></p>
+        <button type="submit" class="btn btn-primary">Access Portal</button>
+        <div id="login-error" class="login-error"></div>
       </form>
 
-      <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--hairline); text-align: center;">
-        <p style="color: var(--muted); font-size: 14px; margin-bottom: 12px;">Haven't submitted your details yet?</p>
-        <a href="contact.html" class="btn btn--outline">Reserve Your Slot</a>
+      <div class="login-footer">
+        <p>Don't have an account yet?</p>
+        <a href="contact.html" class="btn btn-secondary">Reserve Your Slot</a>
       </div>
     </div>
   </div>
 
-  <!-- DASHBOARD WRAPPER (hidden until logged in) -->
+  <!-- DASHBOARD -->
   <div id="dashboard-wrapper" class="dashboard-wrapper" style="display: none;">
-    <!-- SIDEBAR -->
+
+    <!-- SIDEBAR NAV -->
     <aside class="dashboard-sidebar">
       <nav class="sidebar-nav">
         <button class="sidebar-link active" data-section="overview">Overview</button>
@@ -92,29 +786,29 @@
     <!-- MAIN CONTENT -->
     <main class="dashboard-main">
 
-      <!-- OVERVIEW SECTION -->
+      <!-- OVERVIEW -->
       <section id="overview" class="dashboard-section active">
         <div class="welcome-card">
           <h2>Welcome, <span id="client-name"></span></h2>
           <p id="business-name"></p>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 16px; margin: 32px 0;">
-          <h3 class="headline">Project Status</h3>
+        <div class="section-header">
+          <h3>Project Status</h3>
           <span class="status-badge" id="project-status"></span>
         </div>
 
         <div class="stats-row">
           <div class="stat-card">
-            <div class="stat-label">Days Since Start</div>
+            <span class="stat-label">Days Since Start</span>
             <div class="stat-value" id="days-since-start">—</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Milestones Completed</div>
+            <span class="stat-label">Milestones Completed</span>
             <div class="stat-value" id="milestones-completed">—</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Outstanding Invoices</div>
+            <span class="stat-label">Outstanding Balance</span>
             <div class="stat-value" id="outstanding-invoices">—</div>
           </div>
         </div>
@@ -123,83 +817,61 @@
           <p><strong>Next Step:</strong> <span id="next-action">We will be in touch soon with an update on your project.</span></p>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
-          <button id="logout-btn" class="btn btn--outline">Logout</button>
+        <div class="logout-section">
+          <button id="logout-btn" class="btn btn-secondary">Sign Out</button>
         </div>
       </section>
 
-      <!-- PROJECT SECTION -->
+      <!-- PROJECT -->
       <section id="project" class="dashboard-section">
-        <h2 class="headline" id="project-title" style="margin-bottom: 24px;"></h2>
+        <h2 style="font-family: var(--font-headline); font-size: 32px; font-weight: 600; color: var(--primary-black); margin-bottom: 24px;" id="project-title"></h2>
 
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 40px;">
+        <div class="section-header" style="margin: 0 0 40px 0;">
           <span>Current Stage:</span>
           <span class="status-badge" id="project-stage-badge"></span>
         </div>
 
-        <h3 class="subheadline" style="margin-bottom: 24px; color: var(--body);">Progress</h3>
+        <h3 style="font-family: var(--font-headline); font-size: 18px; font-weight: 600; color: var(--primary-black); margin-bottom: 24px;">Progress</h3>
         <div class="step-progress" id="step-progress"></div>
 
-        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Milestones</h3>
+        <h3 style="font-family: var(--font-headline); font-size: 18px; font-weight: 600; color: var(--primary-black); margin-top: 48px; margin-bottom: 24px;">Milestones</h3>
         <div id="milestones-list"></div>
 
-        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Project Notes</h3>
-        <div class="welcome-card" style="border-left: 4px solid var(--green);">
-          <p id="project-notes" style="margin: 0;"></p>
+        <h3 style="font-family: var(--font-headline); font-size: 18px; font-weight: 600; color: var(--primary-black); margin-top: 48px; margin-bottom: 24px;">Project Notes</h3>
+        <div class="next-action-card" style="border-left-color: var(--green);">
+          <p id="project-notes"></p>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
-          <button id="logout-btn-2" class="btn btn--outline">Logout</button>
+        <div class="logout-section">
+          <button class="logout-btn" class="btn btn-secondary">Sign Out</button>
         </div>
       </section>
 
-      <!-- INVOICES SECTION -->
+      <!-- INVOICES -->
       <section id="invoices" class="dashboard-section">
-        <h2 class="headline" style="margin-bottom: 32px;">Your Invoices</h2>
+        <h2 style="font-family: var(--font-headline); font-size: 32px; font-weight: 600; color: var(--primary-black); margin-bottom: 32px;">Invoices</h2>
 
         <div class="invoice-summary" id="invoice-summary"></div>
-
         <div id="invoices-list"></div>
 
-        <div style="margin-top: 40px; text-align: center;">
-          <button id="logout-btn-3" class="btn btn--outline">Logout</button>
+        <div class="logout-section">
+          <button class="logout-btn" class="btn btn-secondary">Sign Out</button>
         </div>
       </section>
 
-      <!-- UPDATES SECTION -->
+      <!-- UPDATES -->
       <section id="updates" class="dashboard-section">
-        <h2 class="headline" style="margin-bottom: 32px;">Project Updates</h2>
+        <h2 style="font-family: var(--font-headline); font-size: 32px; font-weight: 600; color: var(--primary-black); margin-bottom: 32px;">Project Updates</h2>
         <div id="updates-list"></div>
 
-        <div style="margin-top: 40px; text-align: center;">
-          <button id="logout-btn-4" class="btn btn--outline">Logout</button>
+        <div class="logout-section">
+          <button class="logout-btn" class="btn btn-secondary">Sign Out</button>
         </div>
       </section>
 
     </main>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="footer" style="margin-top: 80px; border-top: 1px solid var(--hairline);">
-    <div class="container footer__inner">
-      <div class="footer__col">
-        <p class="eyebrow">Contact</p>
-        <p><a href="mailto:hello@ethiopianwebsites.com">hello@ethiopianwebsites.com</a></p>
-        <p><a href="https://t.me/ethiopianwebsites" target="_blank">@ethiopianwebsites on Telegram</a></p>
-      </div>
-      <div class="footer__col">
-        <p class="eyebrow">Quick Links</p>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="services.html">Services</a></p>
-        <p><a href="portfolio.html">Portfolio</a></p>
-      </div>
-      <div class="footer__copy">
-        <p>&copy; 2024 Ethiopian Websites. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="./src/main.js"></script>
   <script>
     const API_BASE = window.location.hostname === 'localhost'
       ? 'http://localhost:5001'
@@ -208,53 +880,47 @@
     let dashboardData = null;
     let currentClientId = null;
 
-    // Login form handler
+    // Login form
     document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const input = document.getElementById('login-email').value.trim();
       const errorEl = document.getElementById('login-error');
       errorEl.style.display = 'none';
 
       try {
-        // Call verify endpoint with input (email or phone)
         const verifyEndpoint = window.location.hostname === 'localhost'
           ? 'http://localhost:5001/api/verify?input=' + encodeURIComponent(input)
           : '/api/verify?input=' + encodeURIComponent(input);
 
         const response = await fetch(verifyEndpoint);
-
-        if (!response.ok) {
-          throw new Error('Client not found');
-        }
+        if (!response.ok) throw new Error('Client not found');
 
         const data = await response.json();
         currentClientId = data.client.id;
 
-        // Show dashboard, hide login
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('dashboard-wrapper').style.display = 'grid';
-
-        // Load and render dashboard
         await loadDashboard();
       } catch (error) {
         console.error('Login error:', error);
-        errorEl.textContent = '❌ No account found with that email or phone. Please check and try again, or reserve your slot first.';
+        errorEl.textContent = '❌ No account found. Please check your email or phone, or reserve your slot first.';
         errorEl.style.display = 'block';
       }
     });
 
     // Logout handlers
-    document.querySelectorAll('[id^="logout-btn"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentClientId = null;
-        dashboardData = null;
-        document.getElementById('login-screen').style.display = 'flex';
-        document.getElementById('dashboard-wrapper').style.display = 'none';
-        document.getElementById('login-form').reset();
-        document.getElementById('login-error').style.display = 'none';
-      });
+    document.querySelectorAll('[class*="logout-btn"]').forEach(btn => {
+      btn.addEventListener('click', logout);
     });
+
+    function logout() {
+      currentClientId = null;
+      dashboardData = null;
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('dashboard-wrapper').style.display = 'none';
+      document.getElementById('login-form').reset();
+      document.getElementById('login-email').focus();
+    }
 
     async function loadDashboard() {
       try {
@@ -272,12 +938,9 @@
     function render() {
       const { client, project, milestones, invoices, updates } = dashboardData;
 
-      // Header
-      document.getElementById('client-name-nav').textContent = client.user_name;
       document.getElementById('client-name').textContent = client.user_name;
-      document.getElementById('business-name').textContent = client.business_name || 'No business name provided';
+      document.getElementById('business-name').textContent = client.business_name || 'Welcome to your project portal';
 
-      // Overview Stats
       if (project) {
         const startDate = new Date(project.created_at);
         const today = new Date();
@@ -287,31 +950,20 @@
         const completedCount = milestones.filter(m => m.completed).length;
         document.getElementById('milestones-completed').textContent = `${completedCount}/${milestones.length}`;
 
-        const statusClass = project.status === 'launched' ? 'launched' : project.status;
         document.getElementById('project-status').textContent = formatStatus(project.status);
-        document.getElementById('project-status').className = `status-badge ${statusClass}`;
-      }
+        document.getElementById('project-status').className = `status-badge ${project.status}`;
 
-      const unpaidCount = invoices.filter(i => i.status !== 'paid').length;
-      document.getElementById('outstanding-invoices').textContent = unpaidCount;
+        // Next Action
+        const messages = {
+          discovery: 'We are gathering information about your project. Please respond to our inquiry.',
+          design: 'Homepage and services page mockups are in progress. You will review them soon.',
+          development: 'We are building your website. You can expect updates weekly.',
+          review: 'Your website is ready for review. Please test and provide feedback.',
+          launched: 'Congratulations! Your website is now live. Enjoy!'
+        };
+        document.getElementById('next-action').textContent = messages[project.status] || 'Check back soon for updates.';
 
-      // Next Action
-      if (project) {
-        if (project.status === 'discovery') {
-          document.getElementById('next-action').textContent = 'We are currently gathering information about your project. Please respond to our inquiry email.';
-        } else if (project.status === 'design') {
-          document.getElementById('next-action').textContent = 'Homepage and services page mockups are in progress. You will review them next week.';
-        } else if (project.status === 'development') {
-          document.getElementById('next-action').textContent = 'We are building your website. You can expect updates weekly.';
-        } else if (project.status === 'review') {
-          document.getElementById('next-action').textContent = 'Your website is ready for review. Please test and provide feedback via Telegram.';
-        } else {
-          document.getElementById('next-action').textContent = 'Congratulations! Your website is now live.';
-        }
-      }
-
-      // Project Section
-      if (project) {
+        // Project Tab
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-stage-badge').textContent = formatStatus(project.status);
         document.getElementById('project-stage-badge').className = `status-badge ${project.status}`;
@@ -351,332 +1003,10 @@
         document.getElementById('milestones-list').innerHTML = milestonesHtml || '<p style="color: var(--muted);">No milestones yet.</p>';
       }
 
-      // Invoices Section
-      if (invoices.length > 0) {
-        const totalUnpaid = invoices
-          .filter(i => i.status !== 'paid')
-          .reduce((sum, i) => sum + parseFloat(i.amount), 0);
-
-        const summaryHtml = `
-          <p>
-            <span>Total Due</span>
-            <strong style="color: var(--gold);">${totalUnpaid.toFixed(2)} ${invoices[0].currency}</strong>
-          </p>
-          <p class="total">
-            <span>All Invoices</span>
-            <strong>${invoices.length}</strong>
-          </p>
-        `;
-        document.getElementById('invoice-summary').innerHTML = summaryHtml;
-
-        const invoicesHtml = invoices.map(inv => {
-          const dueDate = inv.due_date ? new Date(inv.due_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date';
-          return `
-            <div class="invoice-card">
-              <div class="invoice-details">
-                <h4>${inv.description}</h4>
-                <p>Due: ${dueDate}</p>
-                <span class="status-badge ${inv.status}">${formatStatus(inv.status)}</span>
-              </div>
-              <div class="invoice-amount">
-                <div class="amount">${inv.amount.toFixed(2)}</div>
-                <div class="currency">${inv.currency}</div>
-              </div>
-            </div>
-          `;
-        }).join('');
-        document.getElementById('invoices-list').innerHTML = invoicesHtml;
-      } else {
-        document.getElementById('invoice-summary').innerHTML = '<p style="color: var(--muted);">No invoices yet.</p>';
-        document.getElementById('invoices-list').innerHTML = '';
-      }
-
-      // Updates Section
-      if (updates.length > 0) {
-        const updatesHtml = updates.map(u => {
-          const date = new Date(u.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-          return `
-            <div class="update-item">
-              <div class="update-from">Ethiopian Websites Team</div>
-              <div class="update-date">${date}</div>
-              <div class="update-body">${u.body}</div>
-            </div>
-          `;
-        }).join('');
-        document.getElementById('updates-list').innerHTML = updatesHtml;
-      } else {
-        document.getElementById('updates-list').innerHTML = '<p style="color: var(--muted);">No updates yet. Check back soon!</p>';
-      }
-    }
-
-    function formatStatus(status) {
-      const map = {
-        discovery: 'Discovery',
-        design: 'Design',
-        development: 'Development',
-        review: 'Review',
-        launched: 'Launched',
-        paid: 'Paid',
-        unpaid: 'Unpaid',
-        overdue: 'Overdue',
-      };
-      return map[status] || status.charAt(0).toUpperCase() + status.slice(1);
-    }
-
-    // Sidebar Navigation
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const section = e.target.dataset.section;
-        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
-        document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
-        document.getElementById(section).classList.add('active');
-      });
-    });
-
-    // Mobile nav toggle
-    document.querySelector('.nav__hamburger').addEventListener('click', function() {
-      const navMobile = document.querySelector('.nav__mobile');
-      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.querySelectorAll('.nav__mobile a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav__mobile').style.display = 'none';
-      });
-    });
-
-    // Sticky nav on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        document.getElementById('nav').classList.add('scrolled');
-      } else {
-        document.getElementById('nav').classList.remove('scrolled');
-      }
-    });
-  </script>
-</body>
-</html>
-    <!-- SIDEBAR -->
-    <aside class="dashboard-sidebar">
-      <nav class="sidebar-nav">
-        <button class="sidebar-link active" data-section="overview">Overview</button>
-        <button class="sidebar-link" data-section="project">Project</button>
-        <button class="sidebar-link" data-section="invoices">Invoices</button>
-        <button class="sidebar-link" data-section="updates">Updates</button>
-      </nav>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="dashboard-main">
-
-      <!-- OVERVIEW SECTION -->
-      <section id="overview" class="dashboard-section active">
-        <div class="welcome-card">
-          <h2>Welcome, <span id="client-name"></span></h2>
-          <p id="business-name"></p>
-        </div>
-
-        <div style="display: flex; align-items: center; gap: 16px; margin: 32px 0;">
-          <h3 class="headline">Project Status</h3>
-          <span class="status-badge" id="project-status"></span>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-label">Days Since Start</div>
-            <div class="stat-value" id="days-since-start">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Milestones Completed</div>
-            <div class="stat-value" id="milestones-completed">—</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Outstanding Invoices</div>
-            <div class="stat-value" id="outstanding-invoices">—</div>
-          </div>
-        </div>
-
-        <div class="next-action-card">
-          <p><strong>Next Step:</strong> <span id="next-action">We will be in touch soon with an update on your project.</span></p>
-        </div>
-      </section>
-
-      <!-- PROJECT SECTION -->
-      <section id="project" class="dashboard-section">
-        <h2 class="headline" id="project-title" style="margin-bottom: 24px;"></h2>
-
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 40px;">
-          <span>Current Stage:</span>
-          <span class="status-badge" id="project-stage-badge"></span>
-        </div>
-
-        <h3 class="subheadline" style="margin-bottom: 24px; color: var(--body);">Progress</h3>
-        <div class="step-progress" id="step-progress"></div>
-
-        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Milestones</h3>
-        <div id="milestones-list"></div>
-
-        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Project Notes</h3>
-        <div class="welcome-card" style="border-left: 4px solid var(--green);">
-          <p id="project-notes" style="margin: 0;"></p>
-        </div>
-      </section>
-
-      <!-- INVOICES SECTION -->
-      <section id="invoices" class="dashboard-section">
-        <h2 class="headline" style="margin-bottom: 32px;">Your Invoices</h2>
-
-        <div class="invoice-summary" id="invoice-summary"></div>
-
-        <div id="invoices-list"></div>
-      </section>
-
-      <!-- UPDATES SECTION -->
-      <section id="updates" class="dashboard-section">
-        <h2 class="headline" style="margin-bottom: 32px;">Project Updates</h2>
-        <div id="updates-list"></div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer" style="margin-top: 80px; border-top: 1px solid var(--hairline);">
-    <div class="container footer__inner">
-      <div class="footer__col">
-        <p class="eyebrow">Contact</p>
-        <p><a href="mailto:hello@ethiopianwebsites.com">hello@ethiopianwebsites.com</a></p>
-        <p><a href="https://t.me/ethiopianwebsites" target="_blank">@ethiopianwebsites on Telegram</a></p>
-      </div>
-      <div class="footer__col">
-        <p class="eyebrow">Quick Links</p>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="services.html">Services</a></p>
-        <p><a href="portfolio.html">Portfolio</a></p>
-      </div>
-      <div class="footer__copy">
-        <p>&copy; 2024 Ethiopian Websites. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="./src/main.js"></script>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const clientId = params.get('clientId');
-
-    if (!clientId) {
-      document.body.innerHTML = '<div style="padding: 48px; text-align: center;"><p style="font-size: 18px; color: #c80000;">Error: Missing clientId. Please use: dashboard.html?clientId=1</p></div>';
-    }
-
-    const API_BASE = window.location.hostname === 'localhost'
-      ? 'http://localhost:5001'
-      : '';
-
-    let dashboardData = null;
-
-    async function loadDashboard() {
-      try {
-        const response = await fetch(`${API_BASE}/api/dashboard?clientId=${clientId}`);
-        if (!response.ok) throw new Error('Failed to load dashboard');
-        dashboardData = await response.json();
-        render();
-      } catch (error) {
-        console.error('Error loading dashboard:', error);
-        document.querySelector('.dashboard-main').innerHTML = `
-          <div style="padding: 48px; text-align: center;">
-            <p style="font-size: 18px; color: #c80000;">Error loading dashboard: ${error.message}</p>
-            <p style="color: #7A7A7A; margin-top: 16px;">Make sure your server is running and the database is configured.</p>
-          </div>
-        `;
-      }
-    }
-
-    function render() {
-      const { client, project, milestones, invoices, updates } = dashboardData;
-
-      // Header
-      document.getElementById('client-name-nav').textContent = client.user_name;
-      document.getElementById('client-name').textContent = client.user_name;
-      document.getElementById('business-name').textContent = client.business_name || 'No business name provided';
-
-      // Overview Stats
-      if (project) {
-        const startDate = new Date(project.created_at);
-        const today = new Date();
-        const daysSince = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-        document.getElementById('days-since-start').textContent = daysSince;
-
-        const completedCount = milestones.filter(m => m.completed).length;
-        document.getElementById('milestones-completed').textContent = `${completedCount}/${milestones.length}`;
-
-        const statusClass = project.status === 'launched' ? 'launched' : project.status;
-        document.getElementById('project-status').textContent = formatStatus(project.status);
-        document.getElementById('project-status').className = `status-badge ${statusClass}`;
-      }
-
+      // Invoices
       const unpaidCount = invoices.filter(i => i.status !== 'paid').length;
       document.getElementById('outstanding-invoices').textContent = unpaidCount;
 
-      // Next Action
-      if (project) {
-        if (project.status === 'discovery') {
-          document.getElementById('next-action').textContent = 'We are currently gathering information about your project. Please respond to our inquiry email.';
-        } else if (project.status === 'design') {
-          document.getElementById('next-action').textContent = 'Homepage and services page mockups are in progress. You will review them next week.';
-        } else if (project.status === 'development') {
-          document.getElementById('next-action').textContent = 'We are building your website. You can expect updates weekly.';
-        } else if (project.status === 'review') {
-          document.getElementById('next-action').textContent = 'Your website is ready for review. Please test and provide feedback via Telegram.';
-        } else {
-          document.getElementById('next-action').textContent = 'Congratulations! Your website is now live.';
-        }
-      }
-
-      // Project Section
-      if (project) {
-        document.getElementById('project-title').textContent = project.title;
-        document.getElementById('project-stage-badge').textContent = formatStatus(project.status);
-        document.getElementById('project-stage-badge').className = `status-badge ${project.status}`;
-        document.getElementById('project-notes').textContent = project.stage_notes || 'No notes yet.';
-
-        // Progress Stepper
-        const stages = ['discovery', 'design', 'development', 'review', 'launched'];
-        const stepProgressEl = document.getElementById('step-progress');
-        stepProgressEl.innerHTML = stages.map((stage, index) => {
-          const isActive = stage === project.status;
-          const isCompleted = stages.indexOf(project.status) > index;
-          const classes = ['step', isActive ? 'active' : '', isCompleted ? 'completed' : ''].filter(Boolean).join(' ');
-          return `
-            <div class="${classes}">
-              <div class="step-circle">${isCompleted ? '✓' : index + 1}</div>
-              <div class="step-label">${formatStatus(stage)}</div>
-            </div>
-          `;
-        }).join('');
-
-        // Milestones
-        const milestonesHtml = milestones.map(m => {
-          const dueDate = m.due_date ? new Date(m.due_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date';
-          const completedClass = m.completed ? 'completed' : '';
-          return `
-            <div class="milestone-item ${completedClass}">
-              <div class="milestone-checkbox ${m.completed ? 'checked' : ''}">
-                ${m.completed ? '✓' : ''}
-              </div>
-              <div class="milestone-content">
-                <div class="milestone-label">${m.label}</div>
-                <div class="milestone-due">Due: ${dueDate}</div>
-              </div>
-            </div>
-          `;
-        }).join('');
-        document.getElementById('milestones-list').innerHTML = milestonesHtml || '<p style="color: var(--muted);">No milestones yet.</p>';
-      }
-
-      // Invoices Section
       if (invoices.length > 0) {
         const totalUnpaid = invoices
           .filter(i => i.status !== 'paid')
@@ -687,8 +1017,8 @@
             <span>Total Due</span>
             <strong style="color: var(--gold);">${totalUnpaid.toFixed(2)} ${invoices[0].currency}</strong>
           </p>
-          <p class="total">
-            <span>All Invoices</span>
+          <p class="total" style="margin: 0;">
+            <span>${invoices.length} Invoice${invoices.length !== 1 ? 's' : ''}</span>
             <strong>${invoices.length}</strong>
           </p>
         `;
@@ -711,26 +1041,21 @@
           `;
         }).join('');
         document.getElementById('invoices-list').innerHTML = invoicesHtml;
-      } else {
-        document.getElementById('invoice-summary').innerHTML = '<p style="color: var(--muted);">No invoices yet.</p>';
-        document.getElementById('invoices-list').innerHTML = '';
       }
 
-      // Updates Section
+      // Updates
       if (updates.length > 0) {
         const updatesHtml = updates.map(u => {
-          const date = new Date(u.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+          const date = new Date(u.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
           return `
             <div class="update-item">
-              <div class="update-from">Ethiopian Websites Team</div>
-              <div class="update-date">${date}</div>
+              <span class="update-from">Ethiopian Websites Team</span>
+              <span class="update-date">${date}</span>
               <div class="update-body">${u.body}</div>
             </div>
           `;
         }).join('');
         document.getElementById('updates-list').innerHTML = updatesHtml;
-      } else {
-        document.getElementById('updates-list').innerHTML = '<p style="color: var(--muted);">No updates yet. Check back soon!</p>';
       }
     }
 
@@ -748,7 +1073,7 @@
       return map[status] || status.charAt(0).toUpperCase() + status.slice(1);
     }
 
-    // Sidebar Navigation
+    // Tab navigation
     document.querySelectorAll('.sidebar-link').forEach(link => {
       link.addEventListener('click', (e) => {
         const section = e.target.dataset.section;
@@ -758,31 +1083,6 @@
         document.getElementById(section).classList.add('active');
       });
     });
-
-    // Mobile nav toggle
-    document.querySelector('.nav__hamburger').addEventListener('click', function() {
-      const navMobile = document.querySelector('.nav__mobile');
-      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.querySelectorAll('.nav__mobile a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav__mobile').style.display = 'none';
-      });
-    });
-
-    // Sticky nav on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        document.getElementById('nav').classList.add('scrolled');
-      } else {
-        document.getElementById('nav').classList.remove('scrolled');
-      }
-    });
-
-    // Load dashboard
-    loadDashboard();
   </script>
 </body>
 </html>
