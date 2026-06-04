@@ -1,251 +1,210 @@
-# Client Dashboard Setup & Usage
+# Executive Portal Dashboard — Setup Guide
 
-## Overview
-The client dashboard is a new feature that allows individual clients to track their project status, see milestones, view invoices, and receive project updates.
+## What's New
 
-## Files Added/Modified
+Your dashboard has been completely redesigned with a **clean, premium interface** featuring:
 
-### New Files
-- **`dashboard.html`** — The client-facing dashboard page
-- **`api/dashboard.js`** — Vercel serverless API endpoint to fetch dashboard data
-- **`src/style.css`** — Added dashboard-specific CSS styles (sidebar, cards, progress stepper, etc.)
+✅ **My Orders** — Clients create & track service requests
+✅ **Payments** — View invoices with status tracking
+✅ **Chat** — Direct messaging with the programmer
+✅ **Professional UI** — Sidebar nav, responsive design, Tailwind CSS
 
-### Modified Files
-- **`vite.config.js`** — Added `dashboard` entry point for multi-page build
-- **`Backend/database.sql`** — Added 4 new tables (projects, milestones, invoices, updates)
-- **`initDb.js`** — Updated with seeding for new tables + test data
+---
 
-## Database Schema
+## Database Setup
 
-Four new tables have been added to your Supabase database:
+### 1. Run the Migration
 
-### `projects`
-```sql
-CREATE TABLE projects (
-  id SERIAL PRIMARY KEY,
-  client_id INT REFERENCES clients(id),
-  title VARCHAR(255),
-  status VARCHAR(50),  -- 'discovery', 'design', 'development', 'review', 'launched'
-  stage_notes TEXT,
-  launch_date DATE,
-  created_at TIMESTAMPTZ
-);
-```
-
-### `milestones`
-```sql
-CREATE TABLE milestones (
-  id SERIAL PRIMARY KEY,
-  project_id INT REFERENCES projects(id),
-  label VARCHAR(255),
-  completed BOOLEAN,
-  due_date DATE
-);
-```
-
-### `invoices`
-```sql
-CREATE TABLE invoices (
-  id SERIAL PRIMARY KEY,
-  client_id INT REFERENCES clients(id),
-  amount NUMERIC(10,2),
-  currency VARCHAR(10),  -- 'ETB', 'USD'
-  status VARCHAR(30),    -- 'paid', 'unpaid', 'overdue'
-  due_date DATE,
-  description TEXT,
-  created_at TIMESTAMPTZ
-);
-```
-
-### `updates`
-```sql
-CREATE TABLE updates (
-  id SERIAL PRIMARY KEY,
-  project_id INT REFERENCES projects(id),
-  body TEXT,
-  from_agency BOOLEAN,
-  created_at TIMESTAMPTZ
-);
-```
-
-## Setup Instructions
-
-### 1. Run Database Migrations
-First, initialize the new tables in your Supabase database:
+The new `requests` table is already added to `initDb.js`. Run:
 
 ```bash
-npm run initDb  # or node initDb.js
+npm run init-db
 ```
 
-This will create the 4 new tables and seed with test data (1 test client + project).
+Or manually in **Supabase SQL Editor**, paste and run:
 
-### 2. Build the Project
-```bash
-npm run build
+```sql
+-- Create requests table
+CREATE TABLE IF NOT EXISTS requests (
+    id SERIAL PRIMARY KEY,
+    client_id INT REFERENCES clients(id) ON DELETE CASCADE,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    status VARCHAR(30) DEFAULT 'pending',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Add seed data
+INSERT INTO requests (client_id, title, status, created_at)
+VALUES
+  (1, 'Add a contact form to the homepage', 'in_progress', CURRENT_TIMESTAMP - INTERVAL '2 days'),
+  (1, 'Fix mobile menu on iOS', 'completed', CURRENT_TIMESTAMP - INTERVAL '5 days'),
+  (2, 'Update company logo', 'pending', CURRENT_TIMESTAMP - INTERVAL '1 day')
+ON CONFLICT DO NOTHING;
 ```
 
-The dashboard will be built to `dist/dashboard.html`.
+---
 
-### 3. Deploy to Vercel
-Push your changes to your Vercel-connected repo. The API handler in `api/dashboard.js` will be deployed automatically.
+## API Endpoints
 
-## Using the Dashboard
+### New Endpoints Created
 
-### Access URL Format
-```
-https://your-domain.com/dashboard.html?clientId=1
-```
+| Method | Path | Purpose |
+|--------|------|---------|
+| POST | `/api/requests` | Create a new request |
+| POST | `/api/messages` | Send a message (chat) |
 
-Where `clientId` is the ID of the client in the `clients` table.
+### Updated Endpoint
 
-**Example:** If you have a client with `id=1`, share this link:
-```
-https://your-domain.com/dashboard.html?clientId=1
-```
+| Method | Path | Returns |
+|--------|------|---------|
+| GET | `/api/dashboard?clientId=X` | Now includes `requests` array |
 
-### Features
+### Files Created
 
-#### Overview Tab
-- Welcome card with client name
-- Current project status badge
-- Quick stats: Days since start, Milestones completed, Outstanding invoices
-- Next action card with contextual messaging
+- `api/requests.js` — POST handler for new requests
+- `api/messages.js` — POST handler for chat messages
 
-#### Project Tab
-- Project title and current stage
-- Progress stepper (Discovery → Design → Development → Review → Launched)
-- Milestone checklist with due dates
-- Stage notes from the agency
+### Files Modified
 
-#### Invoices Tab
-- Summary of total amount due
-- List of all invoices with amount, due date, and status
-- Status badges: Paid, Unpaid, Overdue
+- `api/dashboard.js` — Added requests query
+- `initDb.js` — Added requests table + seed data
+- `dashboard.html` — Complete redesign with new UI
 
-#### Updates Tab
-- Timeline-style feed of agency messages
-- Each update shows the date and message body
-- Displays in reverse chronological order (newest first)
+---
 
-## Local Development
+## Testing the Dashboard
 
-### Start Dev Server
+### 1. Run Dev Server
+
 ```bash
 npm run dev
 ```
 
-Vite will serve the site at `http://localhost:5173`.
+### 2. Open Dashboard
 
-### Test the Dashboard
-1. Visit `http://localhost:5173/dashboard.html?clientId=1`
-2. Make sure your `.env` file has `DATABASE_URL` configured
-3. The page will fetch data from the `/api/dashboard?clientId=1` endpoint
-4. In dev mode, the API is at `http://localhost:5001/api/dashboard`
-
-## Managing Client Data
-
-### Adding a New Client & Project
-
-Use any PostgreSQL client or the Supabase Studio UI:
-
-```sql
--- 1. Insert a client
-INSERT INTO clients (user_name, business_name, category, phone_number, gmail)
-VALUES ('John Doe', 'John\'s Bakery', 'business_website', '+251911111111', 'john@bakery.com');
-
--- 2. Insert a project for that client
-INSERT INTO projects (client_id, title, status, stage_notes)
-VALUES (2, 'Johns Bakery Website', 'design', 'Designing homepage mockups');
-
--- 3. Add milestones
-INSERT INTO milestones (project_id, label, completed, due_date)
-VALUES 
-  (2, 'Homepage Design', FALSE, '2024-06-15'),
-  (2, 'Services Page', FALSE, '2024-06-22');
-
--- 4. Add invoices
-INSERT INTO invoices (client_id, amount, currency, status, due_date, description)
-VALUES (2, 10000, 'ETB', 'unpaid', '2024-06-10', '50% Deposit - Website Design');
-
--- 5. Post updates
-INSERT INTO updates (project_id, body, from_agency, created_at)
-VALUES (2, 'We have started working on your website. Homepage mockups coming next week!', TRUE, NOW());
+```
+http://localhost:5173/dashboard.html
 ```
 
-### Updating Project Status
-```sql
-UPDATE projects SET status = 'development' WHERE id = 2;
+### 3. Login
+
+- **Email/Phone:** `test@test.com` or `+251922222222`
+- Sidebar nav appears on desktop
+- Mobile tabs appear on small screens
+
+### 4. Try Each Feature
+
+**My Orders Section:**
+- Click `+ New Request` button
+- Fill in title (required) + description (optional)
+- Submit → appears in list with "PENDING" status
+- Existing test orders show different statuses
+
+**Payments Section:**
+- Shows all invoices for the client
+- Color-coded badges: Green (paid), Gold (unpaid), Red (overdue)
+- Displays amount in ETB, due date, description
+
+**Chat Section:**
+- Existing messages appear (agency left-aligned gold, client right-aligned dark)
+- Type a message → click Send (or press Enter)
+- Message sent as `from_agency = false` in DB
+- New messages appear every 10 seconds (polling)
+
+---
+
+## Features Explained
+
+### 1. Orders / Requests
+- Clients can request anything (new features, edits, designs, etc.)
+- Status options: `pending`, `in_progress`, `completed`
+- Agency can update status in Supabase directly (no admin UI yet)
+
+### 2. Payments (Invoices)
+- Displays all invoices tied to the client
+- Status colors:
+  - 🟢 **Green** = Paid
+  - 🟡 **Gold** = Unpaid
+  - 🔴 **Red** = Overdue
+- Shows amount, currency, due date, description
+
+### 3. Chat
+- One-way polling (no WebSocket)
+- Client messages stored with `from_agency = FALSE`
+- Agency messages appear with label "Programmer"
+- Messages auto-scroll to bottom
+
+---
+
+## Customization
+
+### Change Colors
+Edit the Tailwind config in `dashboard.html`:
+```js
+"gold-dark": "#A8843E",
+"status-pending-bg": "#E8DFC7",
+"status-success-bg": "#C8E6C9",
 ```
 
-## API Reference
-
-### GET `/api/dashboard?clientId=<id>`
-
-Returns all dashboard data for a client.
-
-**Response:**
-```json
-{
-  "client": {
-    "id": 1,
-    "user_name": "Abebe Kebede",
-    "business_name": "Kebede Construction",
-    "phone_number": "+251911111111",
-    "gmail": "abebe@example.com",
-    "created_at": "2024-06-01T10:30:00Z"
-  },
-  "project": {
-    "id": 1,
-    "client_id": 1,
-    "title": "Kebede Construction Website",
-    "status": "design",
-    "stage_notes": "Currently designing the homepage",
-    "launch_date": null,
-    "created_at": "2024-06-01T10:30:00Z"
-  },
-  "milestones": [
-    {
-      "id": 1,
-      "project_id": 1,
-      "label": "Homepage Design",
-      "completed": true,
-      "due_date": "2024-05-28"
-    }
-  ],
-  "invoices": [
-    {
-      "id": 1,
-      "client_id": 1,
-      "amount": 15000.00,
-      "currency": "ETB",
-      "status": "unpaid",
-      "due_date": "2024-06-11",
-      "description": "50% Deposit - Website Design"
-    }
-  ],
-  "updates": [
-    {
-      "id": 1,
-      "project_id": 1,
-      "body": "We have started the design phase...",
-      "from_agency": true,
-      "created_at": "2024-06-02T14:20:00Z"
-    }
-  ]
-}
+### Change Polling Interval
+At bottom of `dashboard.html`, change:
+```js
+setInterval(() => {
+  if (currentClientId && dashboardData) {
+    loadDashboard();
+  }
+}, 10000);  // <- milliseconds (10s)
 ```
 
-## Styling
+### Add More Sections
+The layout supports sidebar nav with tabs for Project, Invoices, Updates (currently placeholders). Update the section IDs to add real content.
 
-The dashboard uses the same design system as the rest of the site:
-- Design tokens: Gold (`#C5A059`), Primary (`#121212`), Green (`#006747`)
-- Fonts: Hanken Grotesk (headlines), Inter (body)
-- Responsive layout: Works on mobile, tablet, and desktop
+---
 
-## Future Enhancements
+## Deployment
 
-1. **Authentication** — Add login (email/password or magic link) so clients can't access other clients' dashboards
-2. **Payment Gateway** — Integrate Stripe or Telebirr for invoice payments
-3. **File Uploads** — Allow clients to upload files (design approval, content, etc.)
-4. **Email Notifications** — Notify clients when projects are updated
-5. **Admin Panel** — Build an admin section to manage projects, invoices, and updates
+### Build for Production
+
+```bash
+npm run build
+```
+
+The bundled dashboard will be at `dist/dashboard.html`.
+
+### Deploy to Vercel
+
+Your API endpoints are already Vercel-compatible (serverless functions in `api/` folder).
+
+---
+
+## Next Steps (Optional)
+
+1. **Admin Panel** — Allow agency to update request status, create invoices, post messages
+2. **Real-time Chat** — Replace polling with WebSocket (Socket.io or similar)
+3. **Payment Gateway** — Add Stripe/PayPal to invoice cards
+4. **Authentication** — Replace URL-based access with proper auth tokens
+5. **Notifications** — Email/SMS when client has new messages or payments due
+
+---
+
+## Troubleshooting
+
+**Chat messages not appearing?**
+- Check browser Network tab → `/api/dashboard` responses
+- Verify `updates` table has `from_agency` column
+- Check polling runs every 10s in browser console
+
+**Orders not saving?**
+- Verify `requests` table exists in Supabase
+- Check `/api/requests` response in Network tab
+- Ensure `clientId` is passed correctly
+
+**Login fails?**
+- Check Supabase has `clients` table with test email
+- Verify environment variable `DATABASE_URL` is set
+- Check `/api/verify` endpoint returns client data
+
+---
+
+That's it! Your clean, simple dashboard is ready. 🎉

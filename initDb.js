@@ -92,6 +92,16 @@ const setupDatabase = async () => {
         created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
 
+    -- 7. Create requests table
+    CREATE TABLE IF NOT EXISTS requests (
+        id SERIAL PRIMARY KEY,
+        client_id INT REFERENCES clients(id) ON DELETE CASCADE,
+        title VARCHAR(255) NOT NULL,
+        description TEXT,
+        status VARCHAR(30) DEFAULT 'pending',
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+
     -- 7. Seed test data if needed
     INSERT INTO clients (user_name, business_name, category, phone_number, gmail)
     VALUES
@@ -132,6 +142,13 @@ const setupDatabase = async () => {
       (2, 'Your website development is progressing well. Homepage and about page are complete.', true, CURRENT_TIMESTAMP - INTERVAL '2 days'),
       (2, 'We are now building the services page. Should be ready by end of week.', true, CURRENT_TIMESTAMP - INTERVAL '12 hours'),
       (2, 'Great work on the feedback! We have made the requested changes.', true, CURRENT_TIMESTAMP - INTERVAL '6 hours')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO requests (client_id, title, status, created_at)
+    VALUES
+      (1, 'Add a contact form to the homepage', 'in_progress', CURRENT_TIMESTAMP - INTERVAL '2 days'),
+      (1, 'Fix mobile menu on iOS', 'completed', CURRENT_TIMESTAMP - INTERVAL '5 days'),
+      (2, 'Update company logo', 'pending', CURRENT_TIMESTAMP - INTERVAL '1 day')
     ON CONFLICT DO NOTHING;
   `;
 

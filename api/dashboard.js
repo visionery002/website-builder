@@ -86,12 +86,20 @@ export default async function handler(req, res) {
       );
       const invoices = invoicesRes.rows;
 
+      // Get requests
+      const requestsRes = await pool.query(
+        'SELECT * FROM requests WHERE client_id = $1 ORDER BY created_at DESC',
+        [clientId]
+      );
+      const requests = requestsRes.rows;
+
       return res.status(200).json({
         client,
         project,
         milestones,
         invoices,
         updates,
+        requests,
       });
     }
 
