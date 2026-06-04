@@ -2,7 +2,7 @@
 console.log('✅ main.js loaded');
 
 // PostHog Project Token
-const POSTHOG_TOKEN = 'phc_BTTpjp3Mdaq3TMfU2RSRxDjGEABMZXphh4HUDxsaygPj';
+const POSTHOG_TOKEN = 'phc_CZUWJRJ2n72rLX6q9BXyUHguEA2LaFMvUrUxGpz4ww2n';
 
 if (POSTHOG_TOKEN && POSTHOG_TOKEN !== 'phc_YOUR_TOKEN_HERE') {
   console.log('🚀 Initializing PostHog...');
