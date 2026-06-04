@@ -18,20 +18,14 @@
       autocapture: true,
       loaded: function(ph) {
         console.log('✅ PostHog loaded successfully', ph);
+        // Send custom event immediately
+        ph.capture('website_opened', {
+          page: window.location.pathname,
+          url: window.location.href,
+          timestamp: new Date().toISOString()
+        });
+        console.log('✅ Custom event "website_opened" sent');
       }
-    });
-
-    window.addEventListener('load', function() {
-      setTimeout(() => {
-        console.log('📊 PostHog should be capturing events now');
-        if (window.posthog) {
-          console.log('posthog object:', window.posthog);
-          // Manually capture a pageview to test
-          posthog.capture('$pageview', {
-            page_path: window.location.pathname
-          });
-        }
-      }, 1000);
     });
   </script>
 </head>

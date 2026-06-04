@@ -18,6 +18,13 @@
       autocapture: true,
       loaded: function(ph) {
         console.log('✅ PostHog loaded successfully', ph);
+        // Send custom event immediately
+        ph.capture("website_opened", {
+          page: window.location.pathname,
+          url: window.location.href,
+          timestamp: new Date().toISOString()
+        });
+        console.log("✅ Custom event "website_opened" sent");
       }
     });
 
