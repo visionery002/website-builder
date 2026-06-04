@@ -16,13 +16,40 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  const { clientId } = req.query;
-
-  if (!clientId) {
-    return res.status(400).json({ error: 'clientId is required' });
-  }
-
   try {
+    // Verify endpoint - find client by email or phone
+    if (req.method === 'GET' && req.url.includes('/verify')) {
+      const { email, phone } = req.query;
+
+      if (!email && !phone) {
+        return res.status(400).json({ error: 'email or phone is required' });
+      }
+
+      // Search for client by email first, then by phone
+      let clientRes = null;
+      if (email && email.trim()) {
+        clientRes = await pool.query('SELECT * FROM clients WHERE gmail = $1 OR user_name ILIKE $2', [email, `%${email}%`]);
+      }
+
+      if ((!clientRes || clientRes.rows.length === 0) && phone && phone.trim()) {
+        clientRes = await pool.query('SELECT * FROM clients WHERE phone_number = $1 OR telegram_username = $2', [phone, phone.replace('@', '')]);
+      }
+
+      if (!clientRes || clientRes.rows.length === 0) {
+        return res.status(404).json({ error: 'Client not found' });
+      }
+
+      const client = clientRes.rows[0];
+      return res.status(200).json({ client });
+    }
+
+    // Dashboard data endpoint
+    const { clientId } = req.query;
+
+    if (!clientId) {
+      return res.status(400).json({ error: 'clientId is required' });
+    }
+
     if (req.method === 'GET') {
       // Fetch complete dashboard data for a client
       const clientRes = await pool.query('SELECT * FROM clients WHERE id = $1', [clientId]);
