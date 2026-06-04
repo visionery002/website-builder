@@ -6,8 +6,17 @@
   <title>Contact — Ethiopian Websites</title>
   <meta name="description" content="Reserve your launch slot. Get in touch with Ethiopian Websites to start your project." />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-DEyg-XX0.svg" />
-  <script type="module" crossorigin src="/assets/main-D9v8EIJh.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-BEDAlQfj.css">
+  <!-- PostHog Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0===u.POSTHOG_DEBUG&&(u.POSTHOG_DEBUG=!1),o=0;o<e._i.length;o++)g(e._i[o]);e.SV=1.1,e.identify=function(t){e.append({"distinct_id":t})},e.capture=function(t,o){e.append({"event":t,"properties":o})},e.capturePageView=function(){e.capture("$pageview")},e.onready=function(t){e._onReady=t}},e.pageView=function(){e.capturePageView()});}(document,window.posthog||[]);
+    posthog.init('phc_oGbwfniW5g979HCxc68fGoJrHGHzt5TfxmUvNkYkPn7y', {
+      api_host: 'https://us.i.posthog.com',
+      capture_pageview: true,
+      autocapture: true,
+    });
+  </script>
+  <script type="module" crossorigin src="/assets/main-D8LkVW4y.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/style-Z72yIo-M.css">
 </head>
 <body>
 
@@ -25,6 +34,7 @@
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
       <div class="nav__actions">
+        <a href="dashboard.html?clientId=" class="btn btn--outline btn--sm" style="margin-right: 12px;">Dashboard</a>
         <a href="contact.html" class="btn btn--primary btn--sm">Reserve Your Slot</a>
       </div>
       <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
@@ -38,6 +48,7 @@
     <a href="index.html#about">About</a>
     <a href="index.html#pricing">Pricing</a>
     <a href="contact.html">Contact</a>
+    <a href="dashboard.html?clientId=" class="btn btn--outline">Dashboard</a>
     <a href="contact.html" class="btn btn--primary">Reserve Your Slot</a>
   </div>
 
@@ -81,19 +92,6 @@
                 <label class="form-label" for="email">Email Address</label>
                 <input class="form-input" type="email" id="email" name="email" placeholder="abebe@example.com" />
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="project-type">Project Type</label>
-              <select class="form-select" id="project-type" name="project-type" required>
-                <option value="" disabled selected>Select a service</option>
-                <option value="business-website">Business Website</option>
-                <option value="ecommerce">E-commerce Store</option>
-                <option value="brand-identity">Brand Identity</option>
-                <option value="jump-start">Business Jump-Start Package</option>
-                <option value="video">Video Production</option>
-                <option value="online-setup">Online Business Setup</option>
-                <option value="other">Something else</option>
-              </select>
             </div>
             <div class="form-group">
               <label class="form-label" for="message">Tell Us About Your Business</label>
@@ -225,13 +223,66 @@
   </footer>
 
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault()
-      const fb = document.getElementById('form-feedback')
-      fb.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.'
-      fb.style.display = 'block'
-      this.reset()
-    })
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const fb = document.getElementById('form-feedback');
+      
+      // Store original button text and set loading state
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Recording Order...';
+      submitBtn.disabled = true;
+      
+      // Clear feedback
+      fb.style.display = 'none';
+      fb.style.color = 'var(--green)';
+
+      // Collect form values
+      const formData = {
+        name: document.getElementById('name').value,
+        business: document.getElementById('business').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+
+      // Determine the API endpoint:
+      // If running locally, target local port 5001. In production on Vercel, target the relative '/api/clients' endpoint.
+      const apiEndpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5001/api/clients'
+        : '/api/clients';
+
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          fb.textContent = '✓ Order received! Your inquiry has been successfully saved, and we will contact you shortly.';
+          fb.style.color = 'var(--green)';
+          fb.style.display = 'block';
+          this.reset();
+        } else {
+          throw new Error(data.error || 'Failed to submit order.');
+        }
+      } catch (err) {
+        console.error('Error submitting form:', err);
+        fb.textContent = `❌ Error: ${err.message || 'Could not connect to the backend server. Please make sure your server is running.'}`;
+        fb.style.color = 'red';
+        fb.style.display = 'block';
+      } finally {
+        // Restore button state
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>

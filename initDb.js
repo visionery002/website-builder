@@ -19,7 +19,7 @@ const pool = new pg.Pool({
 const setupDatabase = async () => {
   const sql = `
     -- 1. Create the custom enum type if it doesn't exist
-    DO $$ 
+    DO $$
     BEGIN
         IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'business_category') THEN
             CREATE TYPE business_category AS ENUM (
@@ -50,6 +50,76 @@ const setupDatabase = async () => {
         business_info TEXT,
         created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
+
+    -- 3. Create projects table
+    CREATE TABLE IF NOT EXISTS projects (
+        id SERIAL PRIMARY KEY,
+        client_id INT REFERENCES clients(id) ON DELETE CASCADE,
+        title VARCHAR(255),
+        status VARCHAR(50) DEFAULT 'discovery',
+        stage_notes TEXT,
+        launch_date DATE,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- 4. Create milestones table
+    CREATE TABLE IF NOT EXISTS milestones (
+        id SERIAL PRIMARY KEY,
+        project_id INT REFERENCES projects(id) ON DELETE CASCADE,
+        label VARCHAR(255),
+        completed BOOLEAN DEFAULT FALSE,
+        due_date DATE
+    );
+
+    -- 5. Create invoices table
+    CREATE TABLE IF NOT EXISTS invoices (
+        id SERIAL PRIMARY KEY,
+        client_id INT REFERENCES clients(id) ON DELETE CASCADE,
+        amount NUMERIC(10,2),
+        currency VARCHAR(10) DEFAULT 'ETB',
+        status VARCHAR(30) DEFAULT 'unpaid',
+        due_date DATE,
+        description TEXT,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- 6. Create updates table
+    CREATE TABLE IF NOT EXISTS updates (
+        id SERIAL PRIMARY KEY,
+        project_id INT REFERENCES projects(id) ON DELETE CASCADE,
+        body TEXT,
+        from_agency BOOLEAN DEFAULT TRUE,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+
+    -- 7. Seed test data if needed
+    INSERT INTO clients (user_name, business_name, category, phone_number, gmail)
+    VALUES ('Abebe Kebede', 'Kebede Construction', 'business_website', '+251911111111', 'abebe@example.com')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO projects (client_id, title, status, stage_notes)
+    VALUES (1, 'Kebede Construction Website', 'design', 'Currently designing the homepage and services page.')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO milestones (project_id, label, completed, due_date)
+    VALUES
+      (1, 'Homepage Design', true, CURRENT_DATE - INTERVAL '7 days'),
+      (1, 'Services Page', false, CURRENT_DATE + INTERVAL '7 days'),
+      (1, 'Contact Form Integration', false, CURRENT_DATE + INTERVAL '14 days'),
+      (1, 'Launch', false, CURRENT_DATE + INTERVAL '21 days')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO invoices (client_id, amount, currency, status, due_date, description)
+    VALUES
+      (1, 15000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '7 days', '50% Deposit - Website Design'),
+      (1, 15000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '21 days', '50% Final - Development & Launch')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO updates (project_id, body, from_agency, created_at)
+    VALUES
+      (1, 'We have started the design phase. Homepage mockups will be ready by next week.', true, CURRENT_TIMESTAMP - INTERVAL '3 days'),
+      (1, 'Please review the attached homepage design and provide feedback.', true, CURRENT_TIMESTAMP - INTERVAL '1 day')
+    ON CONFLICT DO NOTHING;
   `;
 
   try {

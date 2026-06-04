@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Dashboard — Ethiopian Websites</title>
+  <meta name="description" content="Track your website project status, milestones, invoices, and updates." />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./src/style.css" />
+  <!-- PostHog Analytics -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0===u.POSTHOG_DEBUG&&(u.POSTHOG_DEBUG=!1),o=0;o<e._i.length;o++)g(e._i[o]);e.SV=1.1,e.identify=function(t){e.append({"distinct_id":t})},e.capture=function(t,o){e.append({"event":t,"properties":o})},e.capturePageView=function(){e.capture("$pageview")},e.onready=function(t){e._onReady=t}},e.pageView=function(){e.capturePageView()});}(document,window.posthog||[]);
+    posthog.init('phc_oGbwfniW5g979HCxc68fGoJrHGHzt5TfxmUvNkYkPn7y', {
+      api_host: 'https://us.i.posthog.com',
+      capture_pageview: true,
+      autocapture: true,
+    });
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ethiopian Websites home">
+        <img src="https://horizons-cdn.hostinger.com/79238a71-0b1a-4ec9-a85e-9d9902c38c83/07e05e0a256fb6e9fe5dc2b0795b630b.jpg" alt="Ethiopian Websites" class="nav__logo-image" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <span id="client-name-nav" style="color: var(--gold); font-weight: 500;"></span>
+      </div>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="nav__mobile">
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="dashboard-sidebar">
+      <nav class="sidebar-nav">
+        <button class="sidebar-link active" data-section="overview">Overview</button>
+        <button class="sidebar-link" data-section="project">Project</button>
+        <button class="sidebar-link" data-section="invoices">Invoices</button>
+        <button class="sidebar-link" data-section="updates">Updates</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+      <!-- OVERVIEW SECTION -->
+      <section id="overview" class="dashboard-section active">
+        <div class="welcome-card">
+          <h2>Welcome, <span id="client-name"></span></h2>
+          <p id="business-name"></p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; margin: 32px 0;">
+          <h3 class="headline">Project Status</h3>
+          <span class="status-badge" id="project-status"></span>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Days Since Start</div>
+            <div class="stat-value" id="days-since-start">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Milestones Completed</div>
+            <div class="stat-value" id="milestones-completed">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Outstanding Invoices</div>
+            <div class="stat-value" id="outstanding-invoices">—</div>
+          </div>
+        </div>
+
+        <div class="next-action-card">
+          <p><strong>Next Step:</strong> <span id="next-action">We will be in touch soon with an update on your project.</span></p>
+        </div>
+      </section>
+
+      <!-- PROJECT SECTION -->
+      <section id="project" class="dashboard-section">
+        <h2 class="headline" id="project-title" style="margin-bottom: 24px;"></h2>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 40px;">
+          <span>Current Stage:</span>
+          <span class="status-badge" id="project-stage-badge"></span>
+        </div>
+
+        <h3 class="subheadline" style="margin-bottom: 24px; color: var(--body);">Progress</h3>
+        <div class="step-progress" id="step-progress"></div>
+
+        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Milestones</h3>
+        <div id="milestones-list"></div>
+
+        <h3 class="subheadline" style="margin-top: 48px; margin-bottom: 24px; color: var(--body);">Project Notes</h3>
+        <div class="welcome-card" style="border-left: 4px solid var(--green);">
+          <p id="project-notes" style="margin: 0;"></p>
+        </div>
+      </section>
+
+      <!-- INVOICES SECTION -->
+      <section id="invoices" class="dashboard-section">
+        <h2 class="headline" style="margin-bottom: 32px;">Your Invoices</h2>
+
+        <div class="invoice-summary" id="invoice-summary"></div>
+
+        <div id="invoices-list"></div>
+      </section>
+
+      <!-- UPDATES SECTION -->
+      <section id="updates" class="dashboard-section">
+        <h2 class="headline" style="margin-bottom: 32px;">Project Updates</h2>
+        <div id="updates-list"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" style="margin-top: 80px; border-top: 1px solid var(--hairline);">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <p class="eyebrow">Contact</p>
+        <p><a href="mailto:hello@ethiopianwebsites.com">hello@ethiopianwebsites.com</a></p>
+        <p><a href="https://t.me/ethiopianwebsites" target="_blank">@ethiopianwebsites on Telegram</a></p>
+      </div>
+      <div class="footer__col">
+        <p class="eyebrow">Quick Links</p>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="services.html">Services</a></p>
+        <p><a href="portfolio.html">Portfolio</a></p>
+      </div>
+      <div class="footer__copy">
+        <p>&copy; 2024 Ethiopian Websites. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./src/main.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const clientId = params.get('clientId');
+
+    if (!clientId) {
+      document.body.innerHTML = '<div style="padding: 48px; text-align: center;"><p style="font-size: 18px; color: #c80000;">Error: Missing clientId. Please use: dashboard.html?clientId=1</p></div>';
+    }
+
+    const API_BASE = window.location.hostname === 'localhost'
+      ? 'http://localhost:5001'
+      : '';
+
+    let dashboardData = null;
+
+    async function loadDashboard() {
+      try {
+        const response = await fetch(`${API_BASE}/api/dashboard?clientId=${clientId}`);
+        if (!response.ok) throw new Error('Failed to load dashboard');
+        dashboardData = await response.json();
+        render();
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+        document.querySelector('.dashboard-main').innerHTML = `
+          <div style="padding: 48px; text-align: center;">
+            <p style="font-size: 18px; color: #c80000;">Error loading dashboard: ${error.message}</p>
+            <p style="color: #7A7A7A; margin-top: 16px;">Make sure your server is running and the database is configured.</p>
+          </div>
+        `;
+      }
+    }
+
+    function render() {
+      const { client, project, milestones, invoices, updates } = dashboardData;
+
+      // Header
+      document.getElementById('client-name-nav').textContent = client.user_name;
+      document.getElementById('client-name').textContent = client.user_name;
+      document.getElementById('business-name').textContent = client.business_name || 'No business name provided';
+
+      // Overview Stats
+      if (project) {
+        const startDate = new Date(project.created_at);
+        const today = new Date();
+        const daysSince = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('days-since-start').textContent = daysSince;
+
+        const completedCount = milestones.filter(m => m.completed).length;
+        document.getElementById('milestones-completed').textContent = `${completedCount}/${milestones.length}`;
+
+        const statusClass = project.status === 'launched' ? 'launched' : project.status;
+        document.getElementById('project-status').textContent = formatStatus(project.status);
+        document.getElementById('project-status').className = `status-badge ${statusClass}`;
+      }
+
+      const unpaidCount = invoices.filter(i => i.status !== 'paid').length;
+      document.getElementById('outstanding-invoices').textContent = unpaidCount;
+
+      // Next Action
+      if (project) {
+        if (project.status === 'discovery') {
+          document.getElementById('next-action').textContent = 'We are currently gathering information about your project. Please respond to our inquiry email.';
+        } else if (project.status === 'design') {
+          document.getElementById('next-action').textContent = 'Homepage and services page mockups are in progress. You will review them next week.';
+        } else if (project.status === 'development') {
+          document.getElementById('next-action').textContent = 'We are building your website. You can expect updates weekly.';
+        } else if (project.status === 'review') {
+          document.getElementById('next-action').textContent = 'Your website is ready for review. Please test and provide feedback via Telegram.';
+        } else {
+          document.getElementById('next-action').textContent = 'Congratulations! Your website is now live.';
+        }
+      }
+
+      // Project Section
+      if (project) {
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-stage-badge').textContent = formatStatus(project.status);
+        document.getElementById('project-stage-badge').className = `status-badge ${project.status}`;
+        document.getElementById('project-notes').textContent = project.stage_notes || 'No notes yet.';
+
+        // Progress Stepper
+        const stages = ['discovery', 'design', 'development', 'review', 'launched'];
+        const stepProgressEl = document.getElementById('step-progress');
+        stepProgressEl.innerHTML = stages.map((stage, index) => {
+          const isActive = stage === project.status;
+          const isCompleted = stages.indexOf(project.status) > index;
+          const classes = ['step', isActive ? 'active' : '', isCompleted ? 'completed' : ''].filter(Boolean).join(' ');
+          return `
+            <div class="${classes}">
+              <div class="step-circle">${isCompleted ? '✓' : index + 1}</div>
+              <div class="step-label">${formatStatus(stage)}</div>
+            </div>
+          `;
+        }).join('');
+
+        // Milestones
+        const milestonesHtml = milestones.map(m => {
+          const dueDate = m.due_date ? new Date(m.due_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date';
+          const completedClass = m.completed ? 'completed' : '';
+          return `
+            <div class="milestone-item ${completedClass}">
+              <div class="milestone-checkbox ${m.completed ? 'checked' : ''}">
+                ${m.completed ? '✓' : ''}
+              </div>
+              <div class="milestone-content">
+                <div class="milestone-label">${m.label}</div>
+                <div class="milestone-due">Due: ${dueDate}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('milestones-list').innerHTML = milestonesHtml || '<p style="color: var(--muted);">No milestones yet.</p>';
+      }
+
+      // Invoices Section
+      if (invoices.length > 0) {
+        const totalUnpaid = invoices
+          .filter(i => i.status !== 'paid')
+          .reduce((sum, i) => sum + parseFloat(i.amount), 0);
+
+        const summaryHtml = `
+          <p>
+            <span>Total Due</span>
+            <strong style="color: var(--gold);">${totalUnpaid.toFixed(2)} ${invoices[0].currency}</strong>
+          </p>
+          <p class="total">
+            <span>All Invoices</span>
+            <strong>${invoices.length}</strong>
+          </p>
+        `;
+        document.getElementById('invoice-summary').innerHTML = summaryHtml;
+
+        const invoicesHtml = invoices.map(inv => {
+          const dueDate = inv.due_date ? new Date(inv.due_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'No date';
+          return `
+            <div class="invoice-card">
+              <div class="invoice-details">
+                <h4>${inv.description}</h4>
+                <p>Due: ${dueDate}</p>
+                <span class="status-badge ${inv.status}">${formatStatus(inv.status)}</span>
+              </div>
+              <div class="invoice-amount">
+                <div class="amount">${inv.amount.toFixed(2)}</div>
+                <div class="currency">${inv.currency}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('invoices-list').innerHTML = invoicesHtml;
+      } else {
+        document.getElementById('invoice-summary').innerHTML = '<p style="color: var(--muted);">No invoices yet.</p>';
+        document.getElementById('invoices-list').innerHTML = '';
+      }
+
+      // Updates Section
+      if (updates.length > 0) {
+        const updatesHtml = updates.map(u => {
+          const date = new Date(u.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+          return `
+            <div class="update-item">
+              <div class="update-from">Ethiopian Websites Team</div>
+              <div class="update-date">${date}</div>
+              <div class="update-body">${u.body}</div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('updates-list').innerHTML = updatesHtml;
+      } else {
+        document.getElementById('updates-list').innerHTML = '<p style="color: var(--muted);">No updates yet. Check back soon!</p>';
+      }
+    }
+
+    function formatStatus(status) {
+      const map = {
+        discovery: 'Discovery',
+        design: 'Design',
+        development: 'Development',
+        review: 'Review',
+        launched: 'Launched',
+        paid: 'Paid',
+        unpaid: 'Unpaid',
+        overdue: 'Overdue',
+      };
+      return map[status] || status.charAt(0).toUpperCase() + status.slice(1);
+    }
+
+    // Sidebar Navigation
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const section = e.target.dataset.section;
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        e.target.classList.add('active');
+        document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
+        document.getElementById(section).classList.add('active');
+      });
+    });
+
+    // Mobile nav toggle
+    document.querySelector('.nav__hamburger').addEventListener('click', function() {
+      const navMobile = document.querySelector('.nav__mobile');
+      navMobile.style.display = navMobile.style.display === 'block' ? 'none' : 'block';
+    });
+
+    document.querySelectorAll('.nav__mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav__mobile').style.display = 'none';
+      });
+    });
+
+    // Sticky nav on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        document.getElementById('nav').classList.add('scrolled');
+      } else {
+        document.getElementById('nav').classList.remove('scrolled');
+      }
+    });
+
+    // Load dashboard
+    loadDashboard();
+  </script>
+</body>
+</html>
