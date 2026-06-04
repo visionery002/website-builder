@@ -101,6 +101,41 @@ app.post('/api/clients', async (req, res) => {
   }
 });
 
+// Sitemap endpoint for SEO
+app.get('/sitemap.xml', (req, res) => {
+  const baseUrl = process.env.WEBSITE_URL || 'https://et-tech.vercel.app'; // Update with your actual domain
+
+  const pages = [
+    { url: '/', changefreq: 'weekly', priority: '1.0' },
+    { url: '/index.html', changefreq: 'weekly', priority: '1.0' },
+    { url: '/services.html', changefreq: 'monthly', priority: '0.8' },
+    { url: '/portfolio.html', changefreq: 'monthly', priority: '0.8' },
+    { url: '/ethio-tech.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/addis-global.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/law-firm.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/tej-table.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/architecture-design.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/premium-cosmetics.html', changefreq: 'monthly', priority: '0.7' },
+    { url: '/contact.html', changefreq: 'weekly', priority: '0.9' }
+  ];
+
+  let sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+  pages.forEach(page => {
+    sitemap += '  <url>\n';
+    sitemap += `    <loc>${baseUrl}${page.url}</loc>\n`;
+    sitemap += `    <changefreq>${page.changefreq}</changefreq>\n`;
+    sitemap += `    <priority>${page.priority}</priority>\n`;
+    sitemap += '  </url>\n';
+  });
+
+  sitemap += '</urlset>';
+
+  res.header('Content-Type', 'application/xml');
+  res.send(sitemap);
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'healthy', database: 'connected' });
@@ -112,7 +147,8 @@ app.get('/', (req, res) => {
     message: '🚀 Ethiopian Websites Node.js & Supabase Backend is running!',
     endpoints: {
       health: '/api/health',
-      submitOrder: '/api/clients (POST)'
+      submitOrder: '/api/clients (POST)',
+      sitemap: '/sitemap.xml'
     }
   });
 });
