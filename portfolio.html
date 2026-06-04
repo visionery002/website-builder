@@ -7,39 +7,9 @@
   <meta name="description" content="See how Ethiopian Websites has transformed traditional businesses into modern, profitable digital enterprises." />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="stylesheet" href="./src/style.css" />
-  <!-- PostHog Analytics -->
   <script>
-    console.log('PostHog script starting...');
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0===u.POSTHOG_DEBUG&&(u.POSTHOG_DEBUG=!1),o=0;o<e._i.length;o++)g(e._i[o]);e.SV=1.1,e.identify=function(t){e.append({"distinct_id":t})},e.capture=function(t,o){e.append({"event":t,"properties":o})},e.capturePageView=function(){e.capture("$pageview")},e.onready=function(t){e._onReady=t}},e.pageView=function(){e.capturePageView()});}(document,window.posthog||[]);
-
-    posthog.init('phc_oGbwfniW5g979HCxc68fGoJrHGHzt5TfxmUvNkYkPn7y', {
-      api_host: 'https://us.i.posthog.com',
-      capture_pageview: true,
-      autocapture: true,
-      loaded: function(ph) {
-        console.log('✅ PostHog loaded successfully', ph);
-        // Send custom event immediately
-        ph.capture("website_opened", {
-          page: window.location.pathname,
-          url: window.location.href,
-          timestamp: new Date().toISOString()
-        });
-        console.log("✅ Custom event \"website_opened\" sent");
-      }
-    });
-
-    window.addEventListener('load', function() {
-      setTimeout(() => {
-        console.log('📊 PostHog should be capturing events now');
-        if (window.posthog) {
-          console.log('posthog object:', window.posthog);
-          // Manually capture a pageview to test
-          posthog.capture('$pageview', {
-            page_path: window.location.pathname
-          });
-        }
-      }, 1000);
-    });
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0===u.POSTHOG_DEBUG&&(u.POSTHOG_DEBUG=!1),o=0;o<e._i.length;o++)g(e._i[o]);e.SV=1.1;}(document,window.posthog||[]);
+    posthog.init('phc_oGbwfniW5g979HCxc68fGoJrHGHzt5TfxmUvNkYkPn7y', {api_host: 'https://us.i.posthog.com', capture_pageview: true, autocapture: true});
   </script>
 </head>
 <body>
