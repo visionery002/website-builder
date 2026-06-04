@@ -217,8 +217,12 @@
       errorEl.style.display = 'none';
 
       try {
-        // Try to find client by email or phone
-        const response = await fetch(`${API_BASE}/api/dashboard/verify?email=${encodeURIComponent(input)}&phone=${encodeURIComponent(input)}`);
+        // Call verify endpoint with input (email or phone)
+        const verifyEndpoint = window.location.hostname === 'localhost'
+          ? 'http://localhost:5001/api/verify?input=' + encodeURIComponent(input)
+          : '/api/verify?input=' + encodeURIComponent(input);
+
+        const response = await fetch(verifyEndpoint);
 
         if (!response.ok) {
           throw new Error('Client not found');
