@@ -94,11 +94,15 @@ const setupDatabase = async () => {
 
     -- 7. Seed test data if needed
     INSERT INTO clients (user_name, business_name, category, phone_number, gmail)
-    VALUES ('Abebe Kebede', 'Kebede Construction', 'business_website', '+251911111111', 'abebe@example.com')
+    VALUES
+      ('Abebe Kebede', 'Kebede Construction', 'business_website', '+251911111111', 'abebe@example.com'),
+      ('Test Client', 'Test Business', 'business_website', '+251922222222', 'test@test.com')
     ON CONFLICT DO NOTHING;
 
     INSERT INTO projects (client_id, title, status, stage_notes)
-    VALUES (1, 'Kebede Construction Website', 'design', 'Currently designing the homepage and services page.')
+    VALUES
+      (1, 'Kebede Construction Website', 'design', 'Currently designing the homepage and services page.'),
+      (2, 'Test Business Website', 'development', 'Building the main site features right now.')
     ON CONFLICT DO NOTHING;
 
     INSERT INTO milestones (project_id, label, completed, due_date)
@@ -106,19 +110,28 @@ const setupDatabase = async () => {
       (1, 'Homepage Design', true, CURRENT_DATE - INTERVAL '7 days'),
       (1, 'Services Page', false, CURRENT_DATE + INTERVAL '7 days'),
       (1, 'Contact Form Integration', false, CURRENT_DATE + INTERVAL '14 days'),
-      (1, 'Launch', false, CURRENT_DATE + INTERVAL '21 days')
+      (1, 'Launch', false, CURRENT_DATE + INTERVAL '21 days'),
+      (2, 'Homepage Build', true, CURRENT_DATE - INTERVAL '5 days'),
+      (2, 'About Page', true, CURRENT_DATE - INTERVAL '2 days'),
+      (2, 'Services Page', false, CURRENT_DATE + INTERVAL '3 days'),
+      (2, 'Testing & Launch', false, CURRENT_DATE + INTERVAL '10 days')
     ON CONFLICT DO NOTHING;
 
     INSERT INTO invoices (client_id, amount, currency, status, due_date, description)
     VALUES
       (1, 15000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '7 days', '50% Deposit - Website Design'),
-      (1, 15000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '21 days', '50% Final - Development & Launch')
+      (1, 15000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '21 days', '50% Final - Development & Launch'),
+      (2, 20000, 'ETB', 'paid', CURRENT_DATE - INTERVAL '10 days', '50% Deposit - Website Development'),
+      (2, 20000, 'ETB', 'unpaid', CURRENT_DATE + INTERVAL '10 days', '50% Final - Testing & Launch')
     ON CONFLICT DO NOTHING;
 
     INSERT INTO updates (project_id, body, from_agency, created_at)
     VALUES
       (1, 'We have started the design phase. Homepage mockups will be ready by next week.', true, CURRENT_TIMESTAMP - INTERVAL '3 days'),
-      (1, 'Please review the attached homepage design and provide feedback.', true, CURRENT_TIMESTAMP - INTERVAL '1 day')
+      (1, 'Please review the attached homepage design and provide feedback.', true, CURRENT_TIMESTAMP - INTERVAL '1 day'),
+      (2, 'Your website development is progressing well. Homepage and about page are complete.', true, CURRENT_TIMESTAMP - INTERVAL '2 days'),
+      (2, 'We are now building the services page. Should be ready by end of week.', true, CURRENT_TIMESTAMP - INTERVAL '12 hours'),
+      (2, 'Great work on the feedback! We have made the requested changes.', true, CURRENT_TIMESTAMP - INTERVAL '6 hours')
     ON CONFLICT DO NOTHING;
   `;
 
