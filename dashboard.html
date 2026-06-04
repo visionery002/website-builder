@@ -158,44 +158,44 @@
 <div id="dashboard-wrapper" class="hidden w-full flex">
 
   <!-- SIDEBAR NAVIGATION -->
-  <nav class="bg-white dark:bg-primary-container fixed left-0 top-0 h-screen w-sidebar-width border-r border-hairline dark:border-outline-variant flex flex-col py-lg px-sm gap-md z-50 hidden md:flex">
+  <nav class="bg-white dark:bg-primary-container fixed left-0 top-0 h-screen w-sidebar-width border-r border-hairline dark:border-outline-variant flex flex-col py-lg px-sm gap-md z-50">
     <div class="mb-lg">
       <h1 class="font-section-title text-section-title text-primary dark:text-white">Executive Portal</h1>
-      <p class="font-body-small text-body-small text-muted mt-xs">Premium Services</p>
+      <p class="font-body-small text-body-small text-muted mt-xs">Premium Client Services</p>
     </div>
-
     <ul class="flex flex-col gap-sm flex-1">
       <li>
-        <a class="nav-link active flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-gold-dark font-bold border-r-2 border-gold-dark opacity-80 transition-all duration-200 hover:bg-surface-container-low dark:hover:bg-inverse-surface" data-section="overview" href="#">
+        <a class="nav-link active flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-gold-dark font-bold border-r-2 border-gold-dark opacity-80 transition-all duration-200 hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer" data-section="overview">
           <span class="material-symbols-outlined">dashboard</span>
           <span class="font-body-main text-body-main">Overview</span>
         </a>
       </li>
       <li>
-        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface" data-section="project" href="#">
+        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer" data-section="project">
           <span class="material-symbols-outlined">assignment</span>
           <span class="font-body-main text-body-main">Project</span>
         </a>
       </li>
       <li>
-        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface" data-section="invoices" href="#">
+        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer" data-section="invoices">
           <span class="material-symbols-outlined">receipt_long</span>
           <span class="font-body-main text-body-main">Invoices</span>
         </a>
       </li>
       <li>
-        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface" data-section="updates" href="#">
+        <a class="nav-link flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer" data-section="updates">
           <span class="material-symbols-outlined">notifications</span>
           <span class="font-body-main text-body-main">Updates</span>
         </a>
       </li>
     </ul>
-
     <div class="mt-auto">
-      <button class="w-full bg-gold-dark text-white font-label-mono text-label-mono uppercase py-sm px-md rounded-lg hover:brightness-90 transition-all mb-md">Support</button>
+      <button class="w-full bg-gold-dark text-white font-label-mono text-label-mono uppercase py-sm px-md rounded-lg hover:brightness-90 transition-all mb-md">
+        Support
+      </button>
       <ul>
         <li>
-          <a onclick="logout()" class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer" href="#">
+          <a onclick="logout()" class="flex items-center gap-sm px-sm py-xs rounded-DEFAULT text-muted dark:text-outline hover:text-primary dark:hover:text-white transition-colors hover:bg-surface-container-low dark:hover:bg-inverse-surface cursor-pointer">
             <span class="material-symbols-outlined">logout</span>
             <span class="font-body-main text-body-main">Sign Out</span>
           </a>
@@ -205,37 +205,27 @@
   </nav>
 
   <!-- MAIN CONTENT AREA -->
-  <main class="md:ml-sidebar-width flex-1 w-full relative pb-xl">
+  <main class="ml-sidebar-width flex-1 w-full relative pb-xl">
     <!-- HEADER -->
     <header class="bg-surface dark:bg-background docked full-width top flex justify-between items-center px-xl py-md max-w-max-content-width mx-auto">
-      <div>
-        <h2 class="font-page-title text-page-title text-primary hidden md:block">Dashboard</h2>
-        <h2 class="font-page-title-mobile text-page-title-mobile text-primary md:hidden">Dashboard</h2>
-      </div>
-      <!-- Mobile top nav tabs -->
-      <div class="md:hidden flex gap-sm border-b border-hairline overflow-x-auto">
-        <button class="mobile-tab active px-sm py-xs text-body-small text-muted font-label-mono uppercase border-b-2 border-gold-dark" data-section="overview">Overview</button>
-        <button class="mobile-tab px-sm py-xs text-body-small text-muted font-label-mono uppercase border-b-2 border-transparent hover:text-primary" data-section="project">Project</button>
-        <button class="mobile-tab px-sm py-xs text-body-small text-muted font-label-mono uppercase border-b-2 border-transparent hover:text-primary" data-section="invoices">Invoices</button>
-        <button class="mobile-tab px-sm py-xs text-body-small text-muted font-label-mono uppercase border-b-2 border-transparent hover:text-primary" data-section="updates">Updates</button>
-      </div>
+      <h2 class="font-page-title text-page-title text-primary hidden md:block">Dashboard</h2>
+      <h2 class="font-page-title-mobile text-page-title-mobile text-primary md:hidden">Dashboard</h2>
     </header>
 
     <div class="max-w-max-content-width mx-auto px-xl pt-lg">
 
-      <!-- OVERVIEW SECTION (MAIN) -->
-      <section id="overview" class="overview-section">
+      <!-- OVERVIEW SECTION -->
+      <section id="overview" class="section-content">
         <!-- Welcome Card -->
         <section class="mb-section-gap">
           <div>
             <h2 class="font-page-title text-page-title text-primary mb-xs" id="client-welcome">Welcome back, [Name]</h2>
-            <p class="font-body-main text-body-main text-muted" id="client-business">[Business Name]</p>
+            <p class="font-body-main text-body-main text-muted" id="client-business">[Business]</p>
           </div>
         </section>
 
-        <!-- Content Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-section-gap">
-
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
           <!-- Left Column: Orders & Payments -->
           <div class="lg:col-span-2 flex flex-col gap-section-gap">
 
@@ -263,10 +253,9 @@
 
           <!-- Right Column: Chat -->
           <div class="lg:col-span-1">
-            <!-- CHAT SECTION -->
             <section>
               <h3 class="font-section-title text-section-title text-primary mb-md">Chat</h3>
-              <div id="chat-messages" class="bg-surface border border-hairline rounded-xl h-80 overflow-y-auto p-sm mb-md flex flex-col gap-sm">
+              <div id="chat-messages" class="bg-white border border-hairline rounded-xl h-80 overflow-y-auto p-sm mb-md flex flex-col gap-sm">
                 <!-- Chat bubbles rendered here -->
               </div>
               <div class="flex gap-xs">
@@ -275,32 +264,25 @@
               </div>
             </section>
           </div>
-
         </div>
       </section>
 
-      <!-- PROJECT SECTION -->
-      <section id="project" class="section-content hidden">
-        <div class="text-center py-xl">
-          <h3 class="font-section-title text-section-title text-primary">Project Details</h3>
-          <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
-        </div>
+      <!-- PROJECT SECTION (placeholder) -->
+      <section id="project" class="section-content hidden text-center py-xl">
+        <h3 class="font-section-title text-section-title text-primary">Project Details</h3>
+        <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
       </section>
 
-      <!-- INVOICES SECTION -->
-      <section id="invoices" class="section-content hidden">
-        <div class="text-center py-xl">
-          <h3 class="font-section-title text-section-title text-primary">All Invoices</h3>
-          <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
-        </div>
+      <!-- INVOICES SECTION (placeholder) -->
+      <section id="invoices" class="section-content hidden text-center py-xl">
+        <h3 class="font-section-title text-section-title text-primary">All Invoices</h3>
+        <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
       </section>
 
-      <!-- UPDATES SECTION -->
-      <section id="updates" class="section-content hidden">
-        <div class="text-center py-xl">
-          <h3 class="font-section-title text-section-title text-primary">Project Updates</h3>
-          <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
-        </div>
+      <!-- UPDATES SECTION (placeholder) -->
+      <section id="updates" class="section-content hidden text-center py-xl">
+        <h3 class="font-section-title text-section-title text-primary">Project Updates</h3>
+        <p class="font-body-main text-body-main text-muted mt-sm">Coming soon</p>
       </section>
 
     </div>
@@ -308,10 +290,10 @@
     <!-- FOOTER -->
     <footer class="bg-transparent mt-xl border-t border-hairline flex justify-between items-center px-xl py-lg max-w-max-content-width mx-auto w-full">
       <span class="font-label-mono text-label-mono uppercase text-muted">© 2024 Executive Portal. All rights reserved.</span>
-      <div class="gap-md hidden md:flex">
-        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Privacy</a>
-        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Terms</a>
-        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Help</a>
+      <div class="flex gap-md">
+        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Privacy Policy</a>
+        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Terms of Service</a>
+        <a class="font-body-small text-body-small text-muted hover:text-gold-dark transition-colors" href="#">Help Center</a>
       </div>
     </footer>
   </main>
@@ -380,7 +362,7 @@
   function render() {
     if (!dashboardData) return;
 
-    const { client, project, invoices, requests = [] } = dashboardData;
+    const { client, project, invoices = [], requests = [], updates = [] } = dashboardData;
 
     // Welcome
     document.getElementById('client-welcome').textContent = `Welcome back, ${client.user_name}`;
@@ -390,10 +372,10 @@
     renderRequests(requests);
 
     // Payments
-    renderPayments(invoices || []);
+    renderPayments(invoices);
 
     // Chat
-    renderChat(dashboardData.updates || []);
+    renderChat(updates);
   }
 
   // ==================== RENDER ORDERS ====================
@@ -401,21 +383,25 @@
     const list = document.getElementById('requests-list');
 
     if (!requests || requests.length === 0) {
-      list.innerHTML = '<div class="text-center py-lg text-muted">No orders yet. Ready to get started?</div>';
+      list.innerHTML = '<div class="text-center py-lg text-muted font-body-main">No orders yet. Ready to get started?</div>';
       return;
     }
 
-    list.innerHTML = requests.map(req => `
-      <div class="bg-white border border-hairline rounded-xl p-sm flex justify-between items-center hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
-        <div>
-          <h4 class="font-card-title text-card-title text-primary">${req.title}</h4>
-          <p class="font-body-small text-body-small text-muted mt-xs">Requested on ${new Date(req.created_at).toLocaleDateString()}</p>
+    list.innerHTML = requests.map(req => {
+      const statusColor = req.status === 'completed' ? 'status-success-bg' : 'status-pending-bg';
+      const statusText = req.status === 'completed' ? 'on-tertiary-container' : 'gold-dark';
+      return `
+        <div class="bg-white border border-hairline rounded-xl p-sm flex justify-between items-center hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] transition-shadow">
+          <div>
+            <h4 class="font-card-title text-card-title text-primary">${req.title}</h4>
+            <p class="font-body-small text-body-small text-muted mt-xs">Requested on ${new Date(req.created_at).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+          </div>
+          <span class="bg-${statusColor} text-${statusText} font-label-mono text-label-mono px-xs py-[4px] rounded-DEFAULT">
+            ${req.status.toUpperCase()}
+          </span>
         </div>
-        <span class="bg-${getStatusBgClass(req.status)} text-${getStatusTextClass(req.status)} font-label-mono text-label-mono px-xs py-[4px] rounded-DEFAULT">
-          ${req.status.toUpperCase()}
-        </span>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   // ==================== RENDER PAYMENTS ====================
@@ -423,22 +409,36 @@
     const list = document.getElementById('payments-list');
 
     if (!invoices || invoices.length === 0) {
-      list.innerHTML = '<div class="p-sm text-center text-muted">You\'re all caught up!</div>';
+      list.innerHTML = '<div class="p-sm text-center text-muted font-body-main">You\'re all caught up!</div>';
       return;
     }
 
     list.innerHTML = invoices.map(inv => {
       const amount = typeof inv.amount === 'string' ? inv.amount : inv.amount.toFixed(2);
       const status = inv.status || 'unpaid';
+      let statusBgClass = 'status-pending-bg';
+      let statusTextClass = 'gold-dark';
+
+      if (status === 'paid') {
+        statusBgClass = 'status-success-bg';
+        statusTextClass = 'on-tertiary-container';
+      } else if (status === 'overdue') {
+        statusBgClass = 'status-error-bg';
+        statusTextClass = 'error-red';
+      }
+
+      const dueDate = new Date(inv.due_date).toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'});
+      const dueDateLabel = status === 'paid' ? 'Paid' : 'Due';
+
       return `
         <div class="p-sm flex justify-between items-center border-b border-hairline last:border-b-0 hover:bg-surface-container-low transition-colors">
           <div class="flex-1">
             <h4 class="font-body-main text-body-main text-primary">${inv.description}</h4>
-            <p class="font-body-small text-body-small text-muted mt-xs">${status === 'paid' ? 'Paid' : 'Due'} ${new Date(inv.due_date).toLocaleDateString()}</p>
+            <p class="font-body-small text-body-small text-muted mt-xs">${dueDateLabel} ${dueDate}</p>
           </div>
           <div class="text-right flex flex-col items-end gap-xs">
             <span class="font-section-title text-section-title text-gold-dark">${inv.currency || 'ETB'} ${amount}</span>
-            <span class="bg-${getInvoiceStatusBg(status)} text-${getInvoiceStatusText(status)} font-label-mono text-label-mono px-xs py-[2px] rounded-DEFAULT">
+            <span class="bg-${statusBgClass} text-${statusTextClass} font-label-mono text-label-mono px-xs py-[2px] rounded-DEFAULT">
               ${status.toUpperCase()}
             </span>
           </div>
@@ -451,20 +451,27 @@
   function renderChat(updates) {
     const chatBox = document.getElementById('chat-messages');
 
-    if (!updates || updates.length === 0) {
-      chatBox.innerHTML = '<div class="flex items-center justify-center h-full text-muted">No messages yet</div>';
+    const messages = updates.filter(u => u.project_id === dashboardData.project?.id) || [];
+
+    if (!messages || messages.length === 0) {
+      chatBox.innerHTML = '<div class="flex items-center justify-center h-full text-muted font-body-main">No messages yet</div>';
       return;
     }
 
-    chatBox.innerHTML = updates.reverse().map(msg => {
+    chatBox.innerHTML = messages.map(msg => {
       const isAgency = msg.from_agency;
+      const bgClass = isAgency ? 'surface-container-low' : 'primary';
+      const textClass = isAgency ? 'body-text' : 'white';
+      const labelClass = isAgency ? 'gold-dark' : 'muted';
+      const label = isAgency ? 'Programmer' : 'You';
+
       return `
         <div class="flex ${isAgency ? 'justify-start' : 'justify-end'}">
           <div class="max-w-[70%]">
-            <p class="font-label-mono text-label-mono text-${isAgency ? 'gold-dark' : 'muted'} text-[10px] uppercase mb-xs">
-              ${isAgency ? 'Programmer' : 'You'}
+            <p class="font-label-mono text-label-mono text-${labelClass} text-[10px] uppercase mb-xs">
+              ${label}
             </p>
-            <div class="bg-${isAgency ? 'surface-container-low' : 'primary'} text-${isAgency ? 'body-text' : 'white'} px-sm py-xs rounded-lg font-body-small text-body-small">
+            <div class="bg-${bgClass} text-${textClass} px-sm py-xs rounded-lg font-body-small text-body-small">
               ${msg.body}
             </div>
           </div>
@@ -540,38 +547,21 @@
   }
 
   // ==================== TAB SWITCHING ====================
-  document.querySelectorAll('.nav-link, .mobile-tab').forEach(btn => {
+  document.querySelectorAll('.nav-link').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const section = e.currentTarget.dataset.section;
 
       // Update active states
-      document.querySelectorAll('.nav-link, .mobile-tab').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll(`[data-section="${section}"]`).forEach(b => b.classList.add('active'));
-
-      // Update active styles
-      document.querySelectorAll('.nav-link').forEach(l => {
-        if (l.dataset.section === section) {
-          l.classList.add('text-gold-dark', 'border-r-2', 'border-gold-dark');
-          l.classList.remove('text-muted');
-        } else {
-          l.classList.add('text-muted');
-          l.classList.remove('text-gold-dark', 'border-r-2', 'border-gold-dark');
-        }
+      document.querySelectorAll('.nav-link').forEach(b => {
+        b.classList.remove('text-gold-dark', 'border-r-2', 'border-gold-dark', 'opacity-80');
+        b.classList.add('text-muted');
       });
-
-      document.querySelectorAll('.mobile-tab').forEach(t => {
-        if (t.dataset.section === section) {
-          t.classList.add('border-gold-dark');
-          t.classList.remove('border-transparent');
-        } else {
-          t.classList.remove('border-gold-dark');
-          t.classList.add('border-transparent');
-        }
-      });
+      e.currentTarget.classList.add('text-gold-dark', 'border-r-2', 'border-gold-dark', 'opacity-80');
+      e.currentTarget.classList.remove('text-muted');
 
       // Hide/show sections
-      document.querySelectorAll('section[id]').forEach(s => s.classList.add('hidden'));
+      document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
       document.getElementById(section).classList.remove('hidden');
     });
   });
@@ -583,29 +573,7 @@
     document.getElementById('login-screen').classList.remove('hidden');
     document.getElementById('dashboard-wrapper').classList.add('hidden');
     document.getElementById('login-form').reset();
-  }
-
-  // ==================== STATUS COLORS ====================
-  function getStatusBgClass(status) {
-    if (status === 'completed') return 'status-success-bg';
-    return 'status-pending-bg';
-  }
-
-  function getStatusTextClass(status) {
-    if (status === 'completed') return 'on-tertiary-container';
-    return 'gold-dark';
-  }
-
-  function getInvoiceStatusBg(status) {
-    if (status === 'paid') return 'status-success-bg';
-    if (status === 'overdue') return 'status-error-bg';
-    return 'status-pending-bg';
-  }
-
-  function getInvoiceStatusText(status) {
-    if (status === 'paid') return 'on-tertiary-container';
-    if (status === 'overdue') return 'error-red';
-    return 'gold-dark';
+    document.getElementById('login-error').classList.add('hidden');
   }
 
   // Poll chat every 10 seconds
