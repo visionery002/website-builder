@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard.html
 
 # Sitemap location
-Sitemap: https://et-tech.vercel.app/sitemap.xml
+Sitemap: https://ethiowebdesigners.xyz/sitemap.xml
 
 # Crawl delay (optional, in seconds)
 Crawl-delay: 1
