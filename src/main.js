@@ -1,3 +1,6 @@
+import { inject } from '@vercel/analytics'
+inject()
+
 // ─── Sticky Nav ───────────────────────────────────────────────
 const nav = document.querySelector('.nav')
 if (nav) {
